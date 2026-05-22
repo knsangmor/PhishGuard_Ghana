@@ -1,0 +1,10 @@
+{
+  "label": "MODEL_FINGERPRINT",
+  "file": "phishguard_gh_model.h5",
+  "sha256": "6add9a361c40c7f661b1cbd7ec08c8266189f43b5294e5cf0e4714cae76df7a3",
+  "timestamp": "2026-05-03T02:12:52.990335+00:00",
+  "size_bytes": 5855216,
+  "architecture": "CNN-LSTM (BiLSTM, dual Conv1D k3/k5)",
+  "dataset_sha256": "3ef4f488d4d56b532e59dd61a8bfe233dde850a370036de0ed2e75e8bf47b5b5",
+  "auc_roc": 0.995807
+}
