@@ -1,28 +1,13 @@
-# Python junk files
 __pycache__/
 *.py[cod]
-*.pyo
-
-# Virtual environments
 venv/
 env/
 .env
-
-# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
-
-# Large model/data files (too big for GitHub)
 *.h5
 *.pkl
-*.pt
-*.pth
 *.npy
 *.csv
-
-# OS clutter
 .DS_Store
 Thumbs.db
-
-# IDE settings
 .vscode/
-.idea/ 
