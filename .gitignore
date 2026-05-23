@@ -9,6 +9,7 @@ env/
 *.pkl
 *.npy
 *.csv
+.model_rf.pkl
 .DS_Store
 Thumbs.db
 .vscode/
