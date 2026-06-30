@@ -1,4 +1,3 @@
-
 # PhishGuard-GH  |  train_hash.py
 
 # STAGE SEQUENCE (runs top-to-bottom in one process, model loaded ONCE):
@@ -99,7 +98,7 @@ def write_hash_record(filepath: str, digest: str, label: str) -> None:
               label.lower().replace(" ", "_") + ".txt"), "w") as f:
         # written to named hash file, not over the source
         pass
-    # Use the caller-supplied output path instead
+    # Use the caller supplied output path instead
     return record
 
 
@@ -113,8 +112,19 @@ def save_hash_txt(out_path: str, record: dict) -> None:
 # UTILITY: URL encoder
 
 
+def strip_scheme(url: str) -> str:
+    # """Remove a leading http:// or https:// before character encoding.
+
+
+    u = str(url).strip()
+    for prefix in ("https://", "http://"):
+        if u.lower().startswith(prefix):
+            return u[len(prefix):]
+    return u
+
+
 def url_to_seq(url: str) -> list:
-    url = str(url).lower().strip()
+    url = strip_scheme(url).lower().strip()
     seq = [CHAR_TO_INT.get(c, VOCAB_SIZE - 1) for c in url[:MAX_LEN]]
     return seq + [0] * (MAX_LEN - len(seq))
 
@@ -272,9 +282,9 @@ class PhishGuardHashChain:
         )
 
 
-#
-# RATIONALE BUILDER  (rule-based secondary indicators)
-#
+
+# RATIONALE BUILDER  (rule based secondary indicators)
+
 
 _BRANDS     = ["mtn", "vodafone", "airtel", "ecobank", "gcb", "absa", "bog"]
 _FREE_TLDS  = [".ml", ".tk", ".cf", ".ga", ".gq", ".xyz", ".top"]
@@ -745,4 +755,3 @@ if __name__ == "__main__":
     print(f"  95th pct latency   : {np.percentile(lat, 95):.3f} ms")
     log_s = lat.sum() / 1000.0
     print(f"  Throughput         : {loaded_total/log_s:.0f} records/sec")
-

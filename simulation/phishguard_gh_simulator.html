@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhishGuard-GH — Forensic Evidence Simulator</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --bg:#0B121C;
+  --panel:#121B2A;
+  --panel-alt:#16223380;
+  --hairline:#28354A;
+  --hairline-soft:#1D2A3D;
+  --text:#E7ECF3;
+  --text-dim:#8C99B3;
+  --text-faint:#5C6A85;
+  --verified:#2FBF96;
+  --verified-bg:#12352C;
+  --warn:#E8B340;
+  --warn-bg:#3A2F12;
+  --danger:#E2563D;
+  --danger-bg:#3A1D16;
+  --font-display:'Spectral', Georgia, serif;
+  --font-body:'IBM Plex Sans', -apple-system, sans-serif;
+  --font-mono:'IBM Plex Mono', 'SF Mono', monospace;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  background: radial-gradient(circle at 18% 0%, #101B2C 0%, var(--bg) 55%);
+  color:var(--text);
+  font-family:var(--font-body);
+  line-height:1.5;
+  padding:28px 18px 60px;
+}
+::selection{ background:#1F3A4F; }
+a{ color:var(--warn); }
+button:focus-visible, select:focus-visible, input:focus-visible{
+  outline:2px solid var(--warn);
+  outline-offset:2px;
+}
+
+.app-shell{ max-width:1000px; margin:0 auto; }
+
+/* ---------- Case file header ---------- */
+.case-header{
+  border:1px solid var(--hairline);
+  background:linear-gradient(180deg, #131E2F 0%, #101A29 100%);
+  padding:22px 26px 18px;
+  position:relative;
+}
+.case-header::before{
+  content:"";
+  position:absolute; left:0; top:0; bottom:0; width:4px;
+  background:linear-gradient(180deg, var(--warn), var(--verified));
+}
+.case-eyebrow{
+  font-family:var(--font-mono); font-size:11px; letter-spacing:.12em;
+  color:var(--text-faint); text-transform:uppercase; margin:0 0 6px;
+}
+.case-title{
+  font-family:var(--font-display); font-weight:600; font-size:28px;
+  margin:0 0 6px; color:#F3F0E8;
+}
+.case-sub{ color:var(--text-dim); font-size:14px; margin:0 0 14px; max-width:680px; }
+.statute-strip{
+  display:flex; gap:18px; flex-wrap:wrap; font-family:var(--font-mono);
+  font-size:11.5px; color:var(--text-faint); border-top:1px solid var(--hairline-soft);
+  padding-top:12px;
+}
+.statute-strip span b{ color:var(--text-dim); font-weight:600; }
+
+.disclaimer{
+  margin-top:14px; font-size:12.5px; color:var(--text-dim);
+  background:var(--panel-alt); border:1px solid var(--hairline-soft);
+  padding:10px 14px; border-left:3px solid var(--warn);
+}
+.disclaimer b{ color:var(--warn); }
+
+/* ---------- Tabs ---------- */
+.tabs{ display:flex; gap:2px; margin-top:22px; flex-wrap:wrap; }
+.tab-btn{
+  font-family:var(--font-mono); font-size:12.5px; letter-spacing:.04em;
+  background:var(--panel); color:var(--text-dim); border:1px solid var(--hairline);
+  border-bottom:none; padding:11px 18px; cursor:pointer; text-transform:uppercase;
+}
+.tab-btn.active{ background:var(--bg); color:var(--text); border-color:var(--hairline); position:relative; }
+.tab-btn.active::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--warn);
+}
+.tab-btn:not(.active):hover{ color:var(--text); }
+
+.panel{
+  border:1px solid var(--hairline); background:var(--panel);
+  padding:24px; margin-top:0;
+}
+.tab-panel{ display:none; }
+.tab-panel.active{ display:block; }
+
+h2.section-title{
+  font-family:var(--font-display); font-size:19px; font-weight:600;
+  margin:0 0 4px; color:#F3F0E8;
+}
+.section-note{ font-size:13px; color:var(--text-dim); margin:0 0 20px; max-width:620px; }
+
+/* ---------- Forms / buttons ---------- */
+.field-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+input[type=text], input[type=number], select{
+  background:#0E1623; border:1px solid var(--hairline); color:var(--text);
+  font-family:var(--font-mono); font-size:13px; padding:10px 12px; flex:1; min-width:220px;
+}
+label{ font-size:11.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:6px; }
+.btn{
+  font-family:var(--font-mono); font-size:12.5px; letter-spacing:.03em; text-transform:uppercase;
+  border:1px solid var(--hairline); background:#16213400; color:var(--text);
+  padding:11px 18px; cursor:pointer; transition:border-color .15s, color .15s;
+}
+.btn:hover{ border-color:var(--text-dim); }
+.btn-primary{ border-color:var(--warn); color:var(--warn); }
+.btn-primary:hover{ background:var(--warn-bg); }
+.btn-danger{ border-color:var(--danger); color:var(--danger); }
+.btn-danger:hover{ background:var(--danger-bg); }
+.btn-verified{ border-color:var(--verified); color:var(--verified); }
+.btn-verified:hover{ background:var(--verified-bg); }
+.btn:disabled{ opacity:.35; cursor:not-allowed; }
+
+/* ---------- Detection result ---------- */
+.result-card{
+  border:1px solid var(--hairline); padding:18px; margin-top:6px; display:none;
+}
+.result-card.show{ display:block; }
+.verdict-row{ display:flex; align-items:baseline; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+.badge{
+  font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; padding:4px 10px;
+  border:1px solid currentColor; text-transform:uppercase;
+}
+.badge.phish{ color:var(--danger); background:var(--danger-bg); }
+.badge.legit{ color:var(--verified); background:var(--verified-bg); }
+.confidence-num{ font-family:var(--font-mono); font-size:22px; font-weight:600; }
+.rationale-box{
+  font-family:var(--font-mono); font-size:12.5px; color:var(--text-dim);
+  background:#0E1623; border:1px solid var(--hairline-soft); padding:12px 14px; margin-top:6px;
+  white-space:pre-wrap;
+}
+.indicator-list{ margin:10px 0 0; padding-left:18px; font-size:13px; color:var(--text-dim); }
+
+/* ---------- Stats strip ---------- */
+.stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px; }
+.stat-box{ border:1px solid var(--hairline-soft); padding:12px 14px; background:#0E1623; }
+.stat-label{ font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.05em; }
+.stat-value{ font-family:var(--font-mono); font-size:18px; margin-top:4px; color:var(--text); }
+.stat-value.ok{ color:var(--verified); }
+.stat-value.bad{ color:var(--danger); }
+
+/* ---------- Chain visual ---------- */
+.chain-list{ display:flex; flex-direction:column; }
+.record-wrap{ display:flex; flex-direction:column; }
+.connector{ width:2px; height:16px; margin-left:21px; background:var(--hairline); }
+.connector.ok{ background:var(--verified); }
+.connector.bad{ background:repeating-linear-gradient(180deg, var(--danger) 0 4px, transparent 4px 8px); }
+.record-card{
+  display:flex; gap:14px; border:1px solid var(--hairline-soft); background:#0E1623; padding:14px 16px;
+  align-items:flex-start;
+}
+.record-card.bad{ border-color:var(--danger); background:var(--danger-bg); }
+.record-card.unverifiable{ border-color:var(--warn); background:#1c1408; opacity:.85; }
+.record-dot{
+  width:14px; height:14px; border-radius:50%; margin-top:4px; flex-shrink:0;
+  background:var(--verified); border:2px solid #0E1623;
+}
+.record-dot.bad{ background:var(--danger); }
+.record-dot.unverifiable{ background:var(--warn); }
+.record-body{ flex:1; min-width:0; }
+.record-top{ display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; margin-bottom:4px; }
+.record-seq{ font-family:var(--font-mono); font-size:11px; color:var(--text-faint); }
+.record-url{ font-family:var(--font-mono); font-size:13px; color:var(--text); word-break:break-all; }
+.record-meta{ font-size:11.5px; color:var(--text-dim); margin-top:4px; }
+.record-hashes{ font-family:var(--font-mono); font-size:10.5px; color:var(--text-faint); margin-top:6px; word-break:break-all; }
+.status-tag{ font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; margin-top:6px; }
+.status-tag.ok{ color:var(--verified); }
+.status-tag.bad{ color:var(--danger); }
+.status-tag.warn{ color:var(--warn); }
+
+.verify-banner{
+  border:1px solid var(--hairline); padding:14px 16px; margin-bottom:18px; font-size:13px;
+  display:flex; align-items:center; gap:10px;
+}
+.verify-banner.ok{ border-color:var(--verified); color:var(--verified); background:var(--verified-bg); }
+.verify-banner.bad{ border-color:var(--danger); color:var(--danger); background:var(--danger-bg); }
+.verify-banner.idle{ color:var(--text-dim); }
+
+/* ---------- Tamper lab ---------- */
+.tamper-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media (max-width:720px){ .tamper-grid{ grid-template-columns:1fr; } .stats-grid{ grid-template-columns:repeat(2,1fr); } }
+.tamper-col{ border:1px solid var(--hairline-soft); padding:16px; background:#0E1623; }
+.tamper-col h3{ font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); margin:0 0 12px; }
+.anchor-box{ font-family:var(--font-mono); font-size:11.5px; color:var(--text-dim); border:1px dashed var(--hairline); padding:10px 12px; margin-top:10px; }
+.anchor-box.match{ border-color:var(--verified); color:var(--verified); }
+.anchor-box.mismatch{ border-color:var(--danger); color:var(--danger); }
+
+footer.app-footer{ text-align:center; font-size:11.5px; color:var(--text-faint); margin-top:30px; font-family:var(--font-mono); }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <div class="case-header">
+    <p class="case-eyebrow">Forensic Evidence Simulator — Case Demonstration</p>
+    <h1 class="case-title">PhishGuard-GH</h1>
+    <p class="case-sub">Interactive simulation of phishing URL detection, SHA-256 hash-chain forensic logging, and tamper-evidence verification, as described in Chapters 3–4 of the PhishGuardGH thesis.</p>
+    <div class="statute-strip">
+      <span><b>Act 772</b> Ss.7–11 — Electronic Records</span>
+      <span><b>NRCD 323</b> S.135 — Evidence</span>
+      <span><b>Act 1038</b> S.4(c) — Cybersecurity</span>
+    </div>
+    <div class="disclaimer" id="backend-status-banner">
+      <b>Model backend:</b> this simulator calls your real trained CNN-LSTM model through a local inference API (<code id="api-url-label">http://localhost:5000/predict</code>). Run <code>backend/app.py</code> before using the Detect tab. <span id="backend-status-text">Checking connection…</span>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="detect">① Detect</button>
+    <button class="tab-btn" data-tab="chain">② Evidence Chain</button>
+    <button class="tab-btn" data-tab="tamper">③ Tamper Lab</button>
+  </div>
+
+  <div class="panel">
+
+    <!-- ============ TAB 1: DETECT ============ -->
+    <div class="tab-panel active" id="tab-detect">
+      <h2 class="section-title">URL Classification</h2>
+      <p class="section-note">Enter a URL. It is sent to your local inference API, encoded exactly as in <code>model_hash.py:url_to_seq()</code>, and classified by your trained CNN-LSTM model via <code>model.predict()</code>. The rationale string is generated by the same <code>build_rationale()</code> rule indicators used in your forensic pipeline.</p>
+
+      <div class="field-row" id="detect-error-row" style="display:none;">
+        <div class="verify-banner bad" id="detect-error-banner" style="width:100%;"></div>
+      </div>
+
+      <div class="field-row">
+        <input type="text" id="url-input" placeholder="e.g. mtn-momo-verify.tk/secure/login or https://example.com" />
+        <button class="btn btn-primary" id="classify-btn">Classify URL</button>
+      </div>
+      <div class="field-row" style="margin-top:-6px;">
+        <button class="btn" data-sample="http://mtn-momo-verify.tk/secure/login?id=09182736">Try phishing sample</button>
+        <button class="btn" data-sample="https://www.mtn.com.gh/personal/mobile-money">Try legitimate sample</button>
+        <button class="btn" data-sample="http://203.45.112.9/airtel/cashout.php?ref=2291">Try IP-hostname sample</button>
+      </div>
+
+      <div class="result-card" id="result-card">
+        <div class="verdict-row">
+          <span class="badge" id="verdict-badge">—</span>
+          <span class="confidence-num" id="confidence-num">—</span>
+        </div>
+        <div class="rationale-box" id="rationale-box"></div>
+        <ul class="indicator-list" id="indicator-list"></ul>
+        <div style="margin-top:14px;">
+          <button class="btn btn-verified" id="log-btn">Log this detection to evidence chain →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ TAB 2: CHAIN ============ -->
+    <div class="tab-panel" id="tab-chain">
+      <h2 class="section-title">Append-Only SHA-256 Evidence Chain</h2>
+      <p class="section-note">Every logged detection becomes a record containing the verdict, confidence, rationale, statutory citation, and a SHA-256 hash linking it to the previous record. Genesis hash: <code>000…000</code> (64 zeros).</p>
+
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-label">Records logged</div><div class="stat-value" id="stat-count">0</div></div>
+        <div class="stat-box"><div class="stat-label">Mean log latency</div><div class="stat-value" id="stat-mean">—</div></div>
+        <div class="stat-box"><div class="stat-label">95th pct latency</div><div class="stat-value" id="stat-p95">—</div></div>
+        <div class="stat-box"><div class="stat-label">Chain status</div><div class="stat-value" id="stat-status">—</div></div>
+      </div>
+
+      <div class="field-row">
+        <button class="btn btn-verified" id="verify-btn">Verify chain integrity</button>
+        <button class="btn btn-primary" id="anchor-btn">Generate verification anchor</button>
+        <button class="btn btn-danger" id="reset-btn">Reset simulation</button>
+      </div>
+
+      <div class="verify-banner idle" id="verify-banner">Run "Verify chain integrity" to recompute every hash and confirm the chain is unbroken.</div>
+
+      <div class="chain-list" id="chain-list"></div>
+    </div>
+
+    <!-- ============ TAB 3: TAMPER ============ -->
+    <div class="tab-panel" id="tab-tamper">
+      <h2 class="section-title">Tamper-Evidence Lab</h2>
+      <p class="section-note">Pick a logged record and edit its data directly — simulating an attacker rewriting evidence after the fact. Re-verify to see exactly where the chain breaks, then try to "cover up" the tamper by re-linking downstream hashes, and check it against an independently-stored verification anchor.</p>
+
+      <div class="tamper-grid">
+        <div class="tamper-col">
+          <h3>1 · Select &amp; tamper a record</h3>
+          <label for="tamper-select">Record</label>
+          <select id="tamper-select" style="width:100%; margin-bottom:12px;"></select>
+
+          <label for="tamper-url">URL</label>
+          <input type="text" id="tamper-url" style="width:100%; margin-bottom:12px;" />
+
+          <label for="tamper-verdict">Verdict</label>
+          <select id="tamper-verdict" style="width:100%; margin-bottom:12px;">
+            <option value="LEGITIMATE">LEGITIMATE</option>
+            <option value="PHISHING">PHISHING</option>
+          </select>
+
+          <label for="tamper-conf">Confidence (%)</label>
+          <input type="number" id="tamper-conf" min="0" max="100" step="0.01" style="width:100%; margin-bottom:14px;" />
+
+          <button class="btn btn-danger" id="apply-tamper-btn">Apply tamper (don't touch the hash)</button>
+        </div>
+
+        <div class="tamper-col">
+          <h3>2 · Attempt to cover the tracks</h3>
+          <p class="section-note" style="margin-bottom:14px;">A naive edit breaks the record's own hash immediately. A sophisticated attacker could recompute hashes forward to restore internal consistency — try it, then see what still gives them away.</p>
+          <button class="btn" id="relink-btn" style="width:100%; margin-bottom:10px;">Re-link hashes from tampered record onward</button>
+          <button class="btn btn-verified" id="compare-anchor-btn" style="width:100%;">Compare current chain to verification anchor</button>
+          <div class="anchor-box" id="anchor-status">No anchor generated yet. Go to <b>Evidence Chain</b> and click "Generate verification anchor" after logging some records, then come back here to tamper.</div>
+        </div>
+      </div>
+
+      <div class="verify-banner idle" id="tamper-verify-banner" style="margin-top:20px;">Verification results will appear here after you apply a tamper and re-verify on the Evidence Chain tab.</div>
+    </div>
+
+  </div>
+
+  <footer class="app-footer">Hash chain computed locally via Web Crypto. URL text is sent only to your own local backend at localhost:5000 — nothing leaves your machine.</footer>
+</div>
+
+<script>
+const GENESIS = '0'.repeat(64);
+const LEGAL_CITATION = 'Act 772 Ss.7-11 [Electronic Records]; NRCD 323 S.135 [Evidence]; Act 1038 S.4(c)';
+let chain = [];
+let latencies = [];
+let anchor = null;
+
+// ---------- crypto helpers ----------
+async function sha256Hex(str){
+  const enc = new TextEncoder().encode(str);
+  const buf = await crypto.subtle.digest('SHA-256', enc);
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+function stableStringify(obj){
+  const keys = Object.keys(obj).sort();
+  const sorted = {};
+  keys.forEach(k=>sorted[k]=obj[k]);
+  return JSON.stringify(sorted);
+}
+function simulateLatency(){
+  const base = 1 + Math.random()*4;
+  const spike = Math.random() < 0.03 ? Math.random()*300 : 0;
+  return +(base+spike).toFixed(3);
+}
+
+// ---------- model backend ----------
+const API_BASE_URL = 'http://localhost:5000';
+
+async function checkBackendHealth(){
+  const textEl = document.getElementById('backend-status-text');
+  try{
+    const res = await fetch(API_BASE_URL + '/health');
+    if(!res.ok) throw new Error('bad status');
+    const data = await res.json();
+    textEl.textContent = data.model_loaded
+      ? '✓ Connected — trained model loaded and ready.'
+      : '⚠ Connected, but the model did not load on the server. Check the backend console.';
+  }catch(e){
+    textEl.textContent = '✕ Not connected — start the backend with "python app.py" in the backend/ folder, then reload this page.';
+  }
+}
+
+async function classifyUrl(rawUrl){
+  const res = await fetch(API_BASE_URL + '/predict', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ url: rawUrl })
+  });
+  if(!res.ok){
+    const err = await res.json().catch(()=>({error:'Unknown error'}));
+    throw new Error(err.error || ('Request failed with status ' + res.status));
+  }
+  const data = await res.json();
+  // data: { verdict, confidence, rationale, model, legal }
+  return {
+    score: data.confidence,
+    verdict: data.verdict,
+    rationale: data.rationale,
+    indicators: extractIndicators(data.rationale)
+  };
+}
+
+function extractIndicators(rationale){
+  const match = rationale.match(/\[SECONDARY\]\s*(.+?)\.?$/);
+  if(!match) return [];
+  const body = match[1].trim();
+  if(/no rule-based indicators/i.test(body)) return [];
+  return body.split(';').map(s=>s.trim()).filter(Boolean);
+}
+
+
+// ---------- chain operations ----------
+async function addRecord({url, verdict, confidence, rationale}){
+  const prevHash = chain.length ? chain[chain.length-1].record_hash : GENESIS;
+  const rec = {
+    seq_no: chain.length+1,
+    url, verdict,
+    confidence: Number(confidence.toFixed(6)),
+    rationale,
+    timestamp: new Date().toISOString(),
+    model: 'PhishGuard-GH CNN-LSTM',
+    legal: LEGAL_CITATION,
+    prev_hash: prevHash
+  };
+  rec.record_hash = await sha256Hex(stableStringify(rec));
+  chain.push(rec);
+  latencies.push(simulateLatency());
+  renderChainStats();
+  renderChainList(null);
+  renderTamperSelect();
+}
+
+async function verifyChain(){
+  let brokenAt = -1;
+  const results = [];
+  for(let i=0;i<chain.length;i++){
+    const rec = chain[i];
+    const { record_hash, ...rest } = rec;
+    const recomputed = await sha256Hex(stableStringify(rest));
+    const selfValid = recomputed === record_hash;
+    const expectedPrev = i===0 ? GENESIS : chain[i-1].record_hash;
+    const linkValid = rec.prev_hash === expectedPrev;
+    let status = 'ok';
+    if(brokenAt !== -1){ status = 'unverifiable'; }
+    else if(!selfValid || !linkValid){ status = 'bad'; brokenAt = i; }
+    results.push({ selfValid, linkValid, status });
+  }
+  return { results, brokenAt };
+}
+
+async function relinkFrom(idx){
+  for(let i=idx; i<chain.length; i++){
+    chain[i].prev_hash = i===0 ? GENESIS : chain[i-1].record_hash;
+    const { record_hash, ...rest } = chain[i];
+    chain[i].record_hash = await sha256Hex(stableStringify(rest));
+  }
+}
+
+// ---------- rendering ----------
+function renderChainStats(){
+  document.getElementById('stat-count').textContent = chain.length;
+  if(latencies.length){
+    const mean = latencies.reduce((a,b)=>a+b,0)/latencies.length;
+    const sorted = [...latencies].sort((a,b)=>a-b);
+    const p95 = sorted[Math.floor(0.95*(sorted.length-1))];
+    document.getElementById('stat-mean').textContent = mean.toFixed(3)+' ms';
+    document.getElementById('stat-p95').textContent = p95.toFixed(3)+' ms';
+  } else {
+    document.getElementById('stat-mean').textContent = '—';
+    document.getElementById('stat-p95').textContent = '—';
+  }
+}
+
+async function renderChainList(verifyResult){
+  const listEl = document.getElementById('chain-list');
+  listEl.innerHTML = '';
+  const statusEl = document.getElementById('stat-status');
+
+  if(verifyResult){
+    const ok = verifyResult.brokenAt === -1;
+    statusEl.textContent = ok ? 'VERIFIED' : 'BROKEN';
+    statusEl.className = 'stat-value ' + (ok ? 'ok' : 'bad');
+  } else {
+    statusEl.textContent = 'UNVERIFIED';
+    statusEl.className = 'stat-value';
+  }
+
+  chain.forEach((rec, i)=>{
+    if(i>0){
+      const conn = document.createElement('div');
+      let cls = 'connector';
+      if(verifyResult){
+        const prevStatus = verifyResult.results[i-1].status;
+        const curStatus = verifyResult.results[i].status;
+        cls += (prevStatus==='ok' && curStatus!=='bad') ? ' ok' : ' bad';
+      }
+      conn.className = cls;
+      listEl.appendChild(conn);
+    }
+
+    const card = document.createElement('div');
+    card.className = 'record-card';
+    const dot = document.createElement('div');
+    dot.className = 'record-dot';
+
+    let statusTag = '';
+    if(verifyResult){
+      const r = verifyResult.results[i];
+      if(r.status === 'ok'){ statusTag = '<span class="status-tag ok">✓ Verified — self-hash &amp; link match</span>'; }
+      else if(r.status === 'bad'){
+        card.classList.add('bad'); dot.classList.add('bad');
+        const reasons = [];
+        if(!r.selfValid) reasons.push('record hash does not match content');
+        if(!r.linkValid) reasons.push('prev_hash does not match prior record');
+        statusTag = `<span class="status-tag bad">✕ BROKEN — ${reasons.join(' · ')}</span>`;
+      } else {
+        card.classList.add('unverifiable'); dot.classList.add('unverifiable');
+        statusTag = '<span class="status-tag warn">⚠ Unverifiable — downstream of a break</span>';
+      }
+    }
+
+    card.appendChild(dot);
+    const body = document.createElement('div');
+    body.className = 'record-body';
+    body.innerHTML = `
+      <div class="record-top">
+        <span class="record-seq">#${rec.seq_no}</span>
+        <span class="badge ${rec.verdict==='PHISHING'?'phish':'legit'}">${rec.verdict}</span>
+        <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">${(rec.confidence*100).toFixed(2)}%</span>
+      </div>
+      <div class="record-url">${escapeHtml(rec.url)}</div>
+      <div class="record-meta">${rec.timestamp}</div>
+      <div class="record-hashes">prev: ${rec.prev_hash.slice(0,16)}…&nbsp;&nbsp;|&nbsp;&nbsp;hash: ${rec.record_hash.slice(0,16)}…</div>
+      ${statusTag}
+    `;
+    card.appendChild(body);
+    listEl.appendChild(card);
+  });
+
+  if(chain.length===0){
+    listEl.innerHTML = '<p class="section-note">No records yet. Classify a URL on the Detect tab and log it to begin the chain.</p>';
+  }
+}
+
+function escapeHtml(str){
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+function renderTamperSelect(){
+  const sel = document.getElementById('tamper-select');
+  sel.innerHTML = '';
+  chain.forEach(rec=>{
+    const opt = document.createElement('option');
+    opt.value = rec.seq_no;
+    opt.textContent = `#${rec.seq_no} — ${rec.url.slice(0,40)}${rec.url.length>40?'…':''}`;
+    sel.appendChild(opt);
+  });
+  if(chain.length) loadTamperFields();
+}
+
+function loadTamperFields(){
+  const seq = Number(document.getElementById('tamper-select').value);
+  const rec = chain.find(r=>r.seq_no===seq);
+  if(!rec) return;
+  document.getElementById('tamper-url').value = rec.url;
+  document.getElementById('tamper-verdict').value = rec.verdict;
+  document.getElementById('tamper-conf').value = (rec.confidence*100).toFixed(2);
+}
+
+// ---------- tab switching ----------
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+    if(btn.dataset.tab==='tamper') renderTamperSelect();
+  });
+});
+
+// ---------- detect tab ----------
+let lastClassification = null;
+async function runClassification(url){
+  if(!url || !url.trim()) return;
+  const classifyBtn = document.getElementById('classify-btn');
+  const errorRow = document.getElementById('detect-error-row');
+  const errorBanner = document.getElementById('detect-error-banner');
+  errorRow.style.display = 'none';
+  classifyBtn.disabled = true;
+  classifyBtn.textContent = 'Querying model.predict()…';
+  try{
+    const res = await classifyUrl(url);
+    lastClassification = { url, ...res };
+    document.getElementById('result-card').classList.add('show');
+    const badge = document.getElementById('verdict-badge');
+    badge.textContent = res.verdict;
+    badge.className = 'badge ' + (res.verdict==='PHISHING' ? 'phish' : 'legit');
+    document.getElementById('confidence-num').textContent = (res.score*100).toFixed(2) + '%';
+    document.getElementById('rationale-box').textContent = res.rationale;
+    const ul = document.getElementById('indicator-list');
+    ul.innerHTML = res.indicators.length
+      ? res.indicators.map(i=>'<li>'+i+'</li>').join('')
+      : '<li>No rule-based indicators triggered</li>';
+  }catch(e){
+    lastClassification = null;
+    document.getElementById('result-card').classList.remove('show');
+    errorRow.style.display = 'flex';
+    errorBanner.textContent = '✕ Could not get a prediction: ' + e.message + ' — is the backend running at ' + API_BASE_URL + '?';
+  }finally{
+    classifyBtn.disabled = false;
+    classifyBtn.textContent = 'Classify URL';
+  }
+}
+
+document.getElementById('classify-btn').addEventListener('click', ()=>{
+  runClassification(document.getElementById('url-input').value);
+});
+document.getElementById('url-input').addEventListener('keydown', e=>{
+  if(e.key==='Enter') runClassification(e.target.value);
+});
+document.querySelectorAll('[data-sample]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.getElementById('url-input').value = btn.dataset.sample;
+    runClassification(btn.dataset.sample);
+  });
+});
+document.getElementById('log-btn').addEventListener('click', async ()=>{
+  if(!lastClassification) return;
+  await addRecord({
+    url: lastClassification.url,
+    verdict: lastClassification.verdict,
+    confidence: lastClassification.score,
+    rationale: lastClassification.rationale
+  });
+  document.querySelector('[data-tab="chain"]').click();
+});
+
+checkBackendHealth();
+
+// ---------- chain tab ----------
+document.getElementById('verify-btn').addEventListener('click', async ()=>{
+  const banner = document.getElementById('verify-banner');
+  banner.textContent = 'Recomputing hashes…';
+  banner.className = 'verify-banner idle';
+  const result = await verifyChain();
+  await renderChainList(result);
+  if(result.brokenAt === -1){
+    banner.textContent = `✓ Chain verified — all ${chain.length} record(s) self-consistent and correctly linked to the genesis hash.`;
+    banner.className = 'verify-banner ok';
+  } else {
+    banner.textContent = `✕ Chain broken at record #${chain[result.brokenAt].seq_no}. All records from this point forward cannot be trusted.`;
+    banner.className = 'verify-banner bad';
+  }
+});
+
+document.getElementById('anchor-btn').addEventListener('click', ()=>{
+  if(!chain.length){ alert('Log at least one detection before generating an anchor.'); return; }
+  anchor = { finalHash: chain[chain.length-1].record_hash, count: chain.length, takenAt: new Date().toISOString() };
+  const box = document.getElementById('anchor-status');
+  box.className = 'anchor-box';
+  box.innerHTML = `Anchor stored independently: final hash <b>${anchor.finalHash.slice(0,20)}…</b> over ${anchor.count} record(s), taken ${anchor.takenAt}.`;
+});
+
+document.getElementById('reset-btn').addEventListener('click', async ()=>{
+  if(!confirm('Reset the entire simulation? This clears the chain and anchor.')) return;
+  chain = []; latencies = []; anchor = null;
+  document.getElementById('anchor-status').className = 'anchor-box';
+  document.getElementById('anchor-status').innerHTML = 'No anchor generated yet. Go to <b>Evidence Chain</b> and click "Generate verification anchor" after logging some records, then come back here to tamper.';
+  document.getElementById('verify-banner').className = 'verify-banner idle';
+  document.getElementById('verify-banner').textContent = 'Run "Verify chain integrity" to recompute every hash and confirm the chain is unbroken.';
+  document.getElementById('tamper-verify-banner').className = 'verify-banner idle';
+  document.getElementById('tamper-verify-banner').textContent = 'Verification results will appear here after you apply a tamper and re-verify on the Evidence Chain tab.';
+  renderChainStats();
+  renderChainList(null);
+  renderTamperSelect();
+  await seedDemoRecords();
+});
+
+// ---------- tamper tab ----------
+document.getElementById('tamper-select').addEventListener('change', loadTamperFields);
+
+document.getElementById('apply-tamper-btn').addEventListener('click', async ()=>{
+  const seq = Number(document.getElementById('tamper-select').value);
+  const rec = chain.find(r=>r.seq_no===seq);
+  if(!rec) return;
+  rec.url = document.getElementById('tamper-url').value;
+  rec.verdict = document.getElementById('tamper-verdict').value;
+  rec.confidence = Number(document.getElementById('tamper-conf').value)/100;
+  // deliberately leave record_hash and prev_hash untouched — this is the tamper.
+  const result = await verifyChain();
+  await renderChainList(result);
+  renderChainStats();
+  const banner = document.getElementById('tamper-verify-banner');
+  if(result.brokenAt === -1){
+    banner.className = 'verify-banner ok';
+    banner.textContent = '✓ Chain still verifies (edit may not have changed hashed content, or fields outside the hash were touched).';
+  } else {
+    banner.className = 'verify-banner bad';
+    banner.textContent = `✕ Tamper detected at record #${chain[result.brokenAt].seq_no} — recomputed hash no longer matches the stored hash. Everything after it is now unverifiable.`;
+  }
+});
+
+document.getElementById('relink-btn').addEventListener('click', async ()=>{
+  const seq = Number(document.getElementById('tamper-select').value);
+  const idx = chain.findIndex(r=>r.seq_no===seq);
+  if(idx===-1) return;
+  await relinkFrom(idx);
+  const result = await verifyChain();
+  await renderChainList(result);
+  const banner = document.getElementById('tamper-verify-banner');
+  banner.className = 'verify-banner warn';
+  banner.style.borderColor = 'var(--warn)';
+  banner.style.color = 'var(--warn)';
+  banner.style.background = 'var(--warn-bg)';
+  banner.textContent = result.brokenAt === -1
+    ? '⚠ Internal re-link succeeded — the chain now verifies on its own. But check it against the verification anchor →'
+    : `✕ Re-link incomplete — still broken at record #${chain[result.brokenAt].seq_no}.`;
+});
+
+document.getElementById('compare-anchor-btn').addEventListener('click', ()=>{
+  const box = document.getElementById('anchor-status');
+  if(!anchor){
+    box.className = 'anchor-box';
+    box.innerHTML = 'No anchor exists yet. Go to <b>Evidence Chain</b> and generate one — ideally before tampering, since the anchor is what catches a "perfectly" forged chain.';
+    return;
+  }
+  const currentFinal = chain.length ? chain[chain.length-1].record_hash : null;
+  if(currentFinal === anchor.finalHash){
+    box.className = 'anchor-box match';
+    box.innerHTML = `✓ MATCH — current final hash equals the anchor (${anchor.finalHash.slice(0,20)}…) taken at ${anchor.takenAt}. No tampering detected relative to the anchor.`;
+  } else {
+    box.className = 'anchor-box mismatch';
+    box.innerHTML = `✕ ANCHOR MISMATCH — tampering detected. The chain may now be internally self-consistent, but its final hash (${currentFinal ? currentFinal.slice(0,20)+'…' : 'none'}) no longer matches the independently-stored anchor (${anchor.finalHash.slice(0,20)}…) from ${anchor.takenAt}. This is exactly why the methodology stores integrity anchors outside the chain itself.`;
+  }
+});
+
+// ---------- seed demo data ----------
+async function seedDemoRecords(){
+  await addRecord({
+    url: 'funlibre.org/phpformgenerator/forms/form1.html',
+    verdict: 'LEGITIMATE',
+    confidence: 0.027555,
+    rationale: '[PRIMARY] CNN-LSTM: 2.76% LEGITIMATE. [SECONDARY] Non-HTTPS.'
+  });
+  await addRecord({
+    url: 'http://www.meridianranch.com/index.php?option=com_content&view=article&id=121',
+    verdict: 'PHISHING',
+    confidence: 0.999998,
+    rationale: '[PRIMARY] CNN-LSTM: 100.00% PHISHING. [SECONDARY] Non-HTTPS.'
+  });
+  renderChainList(null);
+}
+
+seedDemoRecords();
+</script>
+</body>
+</html>
