@@ -1,11 +1,11 @@
-*.pkl filter=lfs diff=lfs merge=lfs -text
 *.h5 filter=lfs diff=lfs merge=lfs -text
 *.keras filter=lfs diff=lfs merge=lfs -text
 *.npy filter=lfs diff=lfs merge=lfs -text
+*.pkl filter=lfs diff=lfs merge=lfs -text
 *.jsonl filter=lfs diff=lfs merge=lfs -text
-malicious_phish.csv filter=lfs diff=lfs merge=lfs -text
-top-1m.csv filter=lfs diff=lfs merge=lfs -text
-predictions.csv filter=lfs diff=lfs merge=lfs -text
 phishguard_hash_registry.csv filter=lfs diff=lfs merge=lfs -text
+predictions.csv filter=lfs diff=lfs merge=lfs -text
 phishguard_features.csv filter=lfs diff=lfs merge=lfs -text
 phishguard_gh_dataset.csv filter=lfs diff=lfs merge=lfs -text
+malicious_phish.csv filter=lfs diff=lfs merge=lfs -text
+top-1m.csv filter=lfs diff=lfs merge=lfs -text
