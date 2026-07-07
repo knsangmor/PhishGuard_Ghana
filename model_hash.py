@@ -367,11 +367,13 @@ if __name__ == "__main__":
 
     # STAGE 3  Train / val / test split
 
-    print("\nSplitting dataset...")
-    X_tr, X_tmp, y_tr, y_tmp = train_test_split(
-        X, y, test_size=0.30, random_state=42, stratify=y)
-    X_val, X_te, y_val, y_te = train_test_split(
-        X_tmp, y_tmp, test_size=0.50, random_state=42, stratify=y_tmp)
+    from pg_fix import group_split
+    import pandas as pd
+    _df = pd.read_csv(DATASET_CSV) if 'DATASET_CSV' in dir() else pd.read_csv("phishguard_gh_dataset.csv")
+    tr_idx, va_idx, te_idx = group_split(_df)
+    X_tr,  y_tr  = X[tr_idx], y[tr_idx]
+    X_val, y_val = X[va_idx], y[va_idx]
+    X_te,  y_te  = X[te_idx], y[te_idx]
     print(f"    Train: {len(X_tr):,}   Val: {len(X_val):,}   Test: {len(X_te):,}")
 
 
