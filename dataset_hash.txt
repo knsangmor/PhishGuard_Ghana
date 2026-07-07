@@ -1,8 +1,8 @@
 {
   "label": "DATASET_SNAPSHOT",
   "file": "phishguard_gh_dataset.csv",
-  "sha256": "7468df53fd700cfbbb439ceea305de2b99f681416d3f8de3d6fd84161e3e4c66",
-  "timestamp": "2026-06-30T01:43:08.783093+00:00",
-  "size_bytes": 3613594,
+  "sha256": "79c4ace036c6f0cf64fd0447a1a8b24bd95f136b4bfb502f1c38a6f8462f1736",
+  "timestamp": "2026-07-07T15:40:26.747052+00:00",
+  "size_bytes": 3287863,
   "note": "Hashed before any preprocessing or splitting"
 }

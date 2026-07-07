@@ -1,11 +1,11 @@
 {
-  "accuracy": 0.933981,
-  "precision": 0.953166,
-  "recall": 0.917011,
-  "f1_score": 0.934739,
-  "auc_roc": 0.982536,
+  "accuracy": 0.935967,
+  "precision": 0.949191,
+  "recall": 0.913412,
+  "f1_score": 0.930958,
+  "auc_roc": 0.982023,
   "threshold": 0.5,
-  "test_size": 8437,
-  "timestamp": "2026-06-30T03:10:19.572194+00:00",
-  "dataset_sha256": "7468df53fd700cfbbb439ceea305de2b99f681416d3f8de3d6fd84161e3e4c66"
+  "test_size": 7746,
+  "timestamp": "2026-07-07T17:25:04.085097+00:00",
+  "dataset_sha256": "79c4ace036c6f0cf64fd0447a1a8b24bd95f136b4bfb502f1c38a6f8462f1736"
 }
