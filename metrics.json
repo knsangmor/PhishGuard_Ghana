@@ -1,11 +1,11 @@
 {
-  "accuracy": 0.935967,
-  "precision": 0.949191,
-  "recall": 0.913412,
-  "f1_score": 0.930958,
-  "auc_roc": 0.982023,
+  "accuracy": 0.878963,
+  "precision": 0.861689,
+  "recall": 0.878574,
+  "f1_score": 0.870049,
+  "auc_roc": 0.945332,
   "threshold": 0.5,
-  "test_size": 7746,
-  "timestamp": "2026-07-07T17:25:04.085097+00:00",
+  "test_size": 6750,
+  "timestamp": "2026-08-14T19:54:15.362353+00:00",
   "dataset_sha256": "79c4ace036c6f0cf64fd0447a1a8b24bd95f136b4bfb502f1c38a6f8462f1736"
 }

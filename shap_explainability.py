@@ -64,7 +64,7 @@ c5  = Conv1D(conv_k5.filters, conv_k5.kernel_size[0],
              activation="relu", padding="same", name="f_conv_k5")(emb_input)
 x   = Concatenate(name="f_merge")([c3, c5])
 x   = MaxPooling1D(pool_size=maxpool.pool_size[0], name="f_maxpool")(x)
-x   = Bidirectional(LSTM(128), name="f_bilstm")(x)   # 128 = LSTM units
+x   = Bidirectional(LSTM(64), name="f_bilstm")(x)   # 64 = LSTM units
 x   = Dropout(0.4, name="f_dropout")(x)
 x   = Dense(dense64.units, activation="relu", name="f_dense64")(x)
 out = Dense(1, activation="sigmoid", name="f_output")(x)

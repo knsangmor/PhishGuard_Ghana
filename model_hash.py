@@ -32,7 +32,7 @@ os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 
 import tensorflow as tf
 import keras
-from keras import layers, callbacks
+from keras import layers, callbacks, regularizers
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (accuracy_score, precision_score, recall_score,
                               f1_score, roc_auc_score, confusion_matrix, roc_curve)
@@ -48,8 +48,8 @@ MAX_LEN      = 200
 VOCAB_SIZE   = 97
 EMBED_DIM    = 64
 FILTERS      = 128
-LSTM_UNITS   = 128
-DROPOUT      = 0.4
+LSTM_UNITS   = 64
+DROPOUT      = 0.5
 BATCH_SIZE   = 256
 EPOCHS       = 50
 THRESHOLD    = 0.50
@@ -383,17 +383,25 @@ if __name__ == "__main__":
     inp    = keras.Input(shape=(MAX_LEN,), name="url_input")
     emb    = layers.Embedding(VOCAB_SIZE, EMBED_DIM,
                               name="char_embedding")(inp)
-    c3     = layers.Conv1D(FILTERS, 3, activation="relu",
-                           padding="same", name="conv_k3")(emb)
-    c5     = layers.Conv1D(FILTERS, 5, activation="relu",
-                           padding="same", name="conv_k5")(emb)
+    emb_do = layers.SpatialDropout1D(0.2, name="embed_dropout")(emb)
+    c3     = layers.Conv1D(FILTERS, 3, activation="relu", padding="same",
+                           kernel_regularizer=regularizers.l2(1e-4),
+                           name="conv_k3")(emb_do)
+    c5     = layers.Conv1D(FILTERS, 5, activation="relu", padding="same",
+                           kernel_regularizer=regularizers.l2(1e-4),
+                           name="conv_k5")(emb_do)
     merged = layers.Concatenate(name="merge_cnn")([c3, c5])
     pooled = layers.MaxPooling1D(2, name="maxpool")(merged)
     lstm   = layers.Bidirectional(
-                 layers.LSTM(LSTM_UNITS, name="lstm"), name="bilstm")(pooled)
+                 layers.LSTM(LSTM_UNITS,
+                             kernel_regularizer=regularizers.l2(1e-4),
+                             name="lstm"), name="bilstm")(pooled)
     drop   = layers.Dropout(DROPOUT, name="dropout")(lstm)
-    dense  = layers.Dense(64, activation="relu", name="dense64")(drop)
-    output = layers.Dense(1, activation="sigmoid", name="output")(dense)
+    dense  = layers.Dense(64, activation="relu",
+                          kernel_regularizer=regularizers.l2(1e-4),
+                          name="dense64")(drop)
+    drop2  = layers.Dropout(0.3, name="dropout2")(dense)
+    output = layers.Dense(1, activation="sigmoid", name="output")(drop2)
     model  = keras.Model(inputs=inp, outputs=output, name="PhishGuard_GH")
     model.compile(
         optimizer=keras.optimizers.Adam(0.001),
@@ -407,10 +415,11 @@ if __name__ == "__main__":
 
     print("\n[5/13] Training...")
     es  = callbacks.EarlyStopping(
-              monitor="val_loss", patience=7,
+              monitor="val_loss", patience=12,
               restore_best_weights=True, verbose=1)
     rlr = callbacks.ReduceLROnPlateau(
-              monitor="val_loss", factor=0.5, patience=3, verbose=1)
+              monitor="val_loss", factor=0.5, patience=4,
+              min_lr=1e-5, verbose=1)
     history = model.fit(
         X_tr, y_tr,
         validation_data=(X_val, y_val),
