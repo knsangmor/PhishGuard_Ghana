@@ -1,0 +1,9 @@
+{
+  "candidate": 0,
+  "config": {
+    "n_estimators": 200,
+    "max_depth": 3,
+    "learning_rate": 0.1
+  },
+  "validation_average_precision": 0.9376043854818975
+}

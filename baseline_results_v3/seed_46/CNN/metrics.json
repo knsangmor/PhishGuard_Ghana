@@ -1,0 +1,29 @@
+{
+  "seed": 46,
+  "task": "CNN",
+  "dataset_version": "v3",
+  "partition_hashes": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "selected_config": {
+    "candidate": 1,
+    "config": {
+      "filters": 128
+    },
+    "validation_average_precision": 0.9634352719191548,
+    "kind": "CNN",
+    "variant": null
+  },
+  "threshold": 0.5,
+  "test_metrics": {
+    "accuracy": 0.8759963413040638,
+    "precision": 0.894752534287418,
+    "recall": 0.8343063664164582,
+    "f1_score": 0.8634728815997699,
+    "auc_roc": 0.9439681407747745,
+    "average_precision": 0.946739689519748
+  },
+  "input_columns": "scheme-stripped 200-character sequence"
+}

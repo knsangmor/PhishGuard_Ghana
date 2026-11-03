@@ -1,0 +1,87 @@
+{
+  "dataset_version": "v3",
+  "partition_hashes": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "feature_file_hashes": {
+    "train": "6fc90cdb436e4651ec63593c33f4e98861efea23ac30c1131d80bccdde052af4",
+    "validation": "ea38d1eaa054c9b6fb27d138c662b066822799bb098a2ab8a9b81924d4f8e354",
+    "test": "d0b16b86b45461ec809ffd73ec83c9f5d7943ffb56346242cfcf64de81e67406"
+  },
+  "script_sha256": "d006f9ef69906689c39b3b8a85fc37fc4f181a65b28637cb7b6681900aeda2bc",
+  "selection": "maximum validation average precision; first candidate wins ties",
+  "tuning_seed": 42,
+  "grids": {
+    "RF": [
+      {
+        "n_estimators": 200,
+        "max_depth": null,
+        "min_samples_leaf": 1
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": 20,
+        "min_samples_leaf": 2
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": null,
+        "min_samples_leaf": 4
+      }
+    ],
+    "XGB": [
+      {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": 6,
+        "learning_rate": 0.1
+      },
+      {
+        "n_estimators": 300,
+        "max_depth": 3,
+        "learning_rate": 0.05
+      }
+    ],
+    "CNN": [
+      {
+        "filters": 64
+      },
+      {
+        "filters": 128
+      }
+    ],
+    "BiLSTM": [
+      {
+        "units": 64
+      },
+      {
+        "units": 128
+      }
+    ]
+  },
+  "feature_variants": {
+    "full": [],
+    "no_scheme": [
+      "is_https"
+    ],
+    "no_scheme_no_ghana": [
+      "brand_injected",
+      "brand_on_free_tld",
+      "is_https",
+      "is_trusted_gh_tld"
+    ]
+  },
+  "neural_budget": {
+    "epochs": 50,
+    "batch_size": 256,
+    "early_stopping_patience": 12,
+    "monitor": "val_loss"
+  },
+  "note": "Ghana ablation removes explicit brand and trusted Ghana suffix flags. It is not a guarantee of removing all geographic information. Main model settings are fixed, not newly tuned here."
+}

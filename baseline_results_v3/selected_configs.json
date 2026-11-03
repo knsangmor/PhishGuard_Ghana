@@ -1,0 +1,86 @@
+{
+  "RF_full": {
+    "candidate": 1,
+    "config": {
+      "n_estimators": 200,
+      "max_depth": 20,
+      "min_samples_leaf": 2
+    },
+    "validation_average_precision": 0.9620162307171318,
+    "kind": "RF",
+    "variant": "full"
+  },
+  "RF_no_scheme": {
+    "candidate": 1,
+    "config": {
+      "n_estimators": 200,
+      "max_depth": 20,
+      "min_samples_leaf": 2
+    },
+    "validation_average_precision": 0.9581388333085071,
+    "kind": "RF",
+    "variant": "no_scheme"
+  },
+  "RF_no_scheme_no_ghana": {
+    "candidate": 2,
+    "config": {
+      "n_estimators": 200,
+      "max_depth": null,
+      "min_samples_leaf": 4
+    },
+    "validation_average_precision": 0.9572460642213959,
+    "kind": "RF",
+    "variant": "no_scheme_no_ghana"
+  },
+  "XGB_full": {
+    "candidate": 1,
+    "config": {
+      "n_estimators": 200,
+      "max_depth": 6,
+      "learning_rate": 0.1
+    },
+    "validation_average_precision": 0.9572114653520476,
+    "kind": "XGB",
+    "variant": "full"
+  },
+  "XGB_no_scheme": {
+    "candidate": 1,
+    "config": {
+      "n_estimators": 200,
+      "max_depth": 6,
+      "learning_rate": 0.1
+    },
+    "validation_average_precision": 0.9516736603167072,
+    "kind": "XGB",
+    "variant": "no_scheme"
+  },
+  "XGB_no_scheme_no_ghana": {
+    "candidate": 1,
+    "config": {
+      "n_estimators": 200,
+      "max_depth": 6,
+      "learning_rate": 0.1
+    },
+    "validation_average_precision": 0.9517046078788615,
+    "kind": "XGB",
+    "variant": "no_scheme_no_ghana"
+  },
+  "CNN": {
+    "candidate": 1,
+    "config": {
+      "filters": 128
+    },
+    "validation_average_precision": 0.9634352719191548,
+    "kind": "CNN",
+    "variant": null
+  },
+  "BiLSTM": {
+    "candidate": 1,
+    "config": {
+      "units": 128
+    },
+    "validation_average_precision": 0.9666996754229014,
+    "kind": "BiLSTM",
+    "variant": null
+  }
+}
