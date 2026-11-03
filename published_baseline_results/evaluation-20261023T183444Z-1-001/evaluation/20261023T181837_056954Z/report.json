@@ -1,0 +1,55 @@
+{
+  "checkpoint": "amahdaouy/DomURLs_BERT",
+  "revision": "ba5fa28ae1361f8115630e252ac49535ffe3bab1",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "run_fingerprints": {
+    "42": {
+      "best_model_sha256": "23c871cd54ea00d8420a3f957e91e7ee4f707ba77fcbe8c0ec205d164f877573",
+      "training_protocol_sha256": "f38157294be9eaccfc8ef7eb086e013e4ea514d9f170d158004584ee1c67c879",
+      "test_predictions_sha256": "a140217b86359a813d2a1af7262f33abe5e588a72ab0a14614105a528fa10c94"
+    },
+    "43": {
+      "best_model_sha256": "1d318b7e482998e30e694f00eaffdba5ea56a59bd3750c78a266df49cc9d3069",
+      "training_protocol_sha256": "73da858b5cabc3318f03b89c48f165e2dee18d9347f801c39c9eacbce668596a",
+      "test_predictions_sha256": "8f6c80a3ca8b1e70fe0ae740fa1ad25356ada1f05ff30ac64613b638da497dc0"
+    },
+    "44": {
+      "best_model_sha256": "835bb05981ea9310ae3a77b3b3335ea2decac769ec7d888d0862b64564266b0c",
+      "training_protocol_sha256": "82b47b50e532a8e930c589778ade3ec0afa82b8bc70c7f364aa43a1256b0e73a",
+      "test_predictions_sha256": "2a7e6bda3e7f22a17ad3ca6143622248cd690af8d0c3424c2eb83755f23d86e1"
+    },
+    "45": {
+      "best_model_sha256": "ca7e3f55f9eeeb563ff28741250150dcbba9fe9ee9754b1bc7d6be78cf2ca8ea",
+      "training_protocol_sha256": "05d7c7e2ac8b04eb343feecb0218d69fabe3c7e5825c861018fcf8f25d695647",
+      "test_predictions_sha256": "f99fe03ddd4aee16d067fb26652eb3702067a553d95b6c285c840df855341879"
+    },
+    "46": {
+      "best_model_sha256": "c7261351127123471750fc2df27afe6ea1dd2c02b7feda3e00f9612bb4f02a1a",
+      "training_protocol_sha256": "36e6d45d2ba055eea0d98c49e0a3935da7d2b1b98de2726f31995ee3f9c12219",
+      "test_predictions_sha256": "376b48ce5be0e0ccff68925b221e683b244383992a4190226e9a83e24607efe0"
+    }
+  },
+  "evaluation_precision": "float32 on GPU",
+  "positive_class": "1: phishing, malware or defacement",
+  "threshold_selection": "Validation only; test set never used for selection",
+  "confidence_intervals": "95% Student-t intervals across five training seeds on one fixed test set; not population generalization intervals.",
+  "limitations": [
+    "Adapted published baseline, not exact reproduction of paper results.",
+    "Pretrained encoder and tokenizer differ from the character models.",
+    "Pretraining overlap with evaluation URLs is unknown.",
+    "Validation FPR targets do not guarantee the same FPR on test data.",
+    "No paired significance test or CPU benchmark performed in this cell."
+  ],
+  "training_performed": false
+}

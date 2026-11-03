@@ -1,0 +1,9 @@
+{
+  "seed": 42,
+  "epochs_completed": 8,
+  "best_epoch": 3,
+  "best_validation_crossentropy": 0.1473569048193885,
+  "test_scored": false,
+  "best_model": "/content/drive/MyDrive/PhishGuard_DomURLs_BERT_v3/seed_42/best_model.pt",
+  "resume_checkpoint": "/content/drive/MyDrive/PhishGuard_DomURLs_BERT_v3/seed_42/resume.pt"
+}
