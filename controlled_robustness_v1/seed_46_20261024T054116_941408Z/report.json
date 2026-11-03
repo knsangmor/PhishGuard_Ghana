@@ -1,0 +1,203 @@
+{
+  "complete": true,
+  "protocol": {
+    "seed": 46,
+    "fixture_seed": 7042,
+    "fixture_cases": 400,
+    "partition_sha256": {
+      "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+      "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+      "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+    },
+    "files": {
+      "CNN_LSTM": {
+        "relative_path": "corrected_results_v3/seed_46/phishguard_gh_model.keras",
+        "sha256": "135ddffcdd6ab771009aee21e934700fd40f8fe36d337b2d44622749865af1f5"
+      },
+      "RF_full": {
+        "relative_path": "baseline_results_v3/seed_46/RF_full/model.pkl",
+        "sha256": "85f439d109abb91eb9828e815ba7e6242ca775d3005a916fbe2f90334608513c"
+      },
+      "XGB_full": {
+        "relative_path": "baseline_results_v3/seed_46/XGB_full/model.pkl",
+        "sha256": "94caf2279e3dc47fb3bedd23ee2a2a2d948daa9a30e21eb723d8c3f217e3314e"
+      },
+      "corrected_feature_generator": {
+        "relative_path": "generate_corrected_features.py",
+        "sha256": "273819892812656ce8c7c070b3abb0d7be364c356c91d09a61063b236d5ae210"
+      },
+      "test_features": {
+        "relative_path": "dataset_fix_outputs_v3/test_features.csv",
+        "sha256": "d0b16b86b45461ec809ffd73ec83c9f5d7943ffb56346242cfcf64de81e67406"
+      },
+      "baseline_protocol": {
+        "relative_path": "baseline_results_v3/protocol.json",
+        "sha256": "82c0b77b69baf96ce9887686ed678efe0aa059a8120f3f25a7bf548bda337fdb"
+      },
+      "CNN_LSTM_test_predictions": {
+        "relative_path": "corrected_results_v3/seed_46/test_predictions.csv",
+        "sha256": "8e8f3d2ea672d3d5cefc9df72175892425188fbb15e517a27e7a5e17ad07464f"
+      },
+      "RF_full_test_predictions": {
+        "relative_path": "baseline_results_v3/seed_46/RF_full/test_predictions.csv",
+        "sha256": "5273e532bd7a06682875c0aeb29d37a16e4bcba07d1f92c070c7280366d66b24"
+      },
+      "RF_full_metrics": {
+        "relative_path": "baseline_results_v3/seed_46/RF_full/metrics.json",
+        "sha256": "2855ce8ff1581d5e35bb7f43d32d4723c4c6becc666c1c337a05920a7deee6a6"
+      },
+      "XGB_full_test_predictions": {
+        "relative_path": "baseline_results_v3/seed_46/XGB_full/test_predictions.csv",
+        "sha256": "7b10d4a7fc3703e917f29b8dd78c9004d3b1f0851e78bf6b290b11363643b1d8"
+      },
+      "XGB_full_metrics": {
+        "relative_path": "baseline_results_v3/seed_46/XGB_full/metrics.json",
+        "sha256": "0d4dd7f1df19ad329361881be2b2b781b6d4d13250c0a0e5e79f3ca0612eeac8"
+      }
+    },
+    "script_sha256": "0201f2e44cdcae5a4cd004a4291ea22c259ff6c4fe94b1dc13ba6832d6795cde",
+    "rounds": [
+      [
+        "brand_query",
+        "pct_1",
+        "path_32",
+        "fragment"
+      ],
+      [
+        "path_256",
+        "path_512",
+        "unicode_query",
+        "long_query"
+      ],
+      [
+        "pct_2",
+        "path_96",
+        "brand_query",
+        "unicode_query"
+      ],
+      [
+        "path_512",
+        "pct_4",
+        "long_query",
+        "fragment"
+      ]
+    ],
+    "maximum_new_score_queries_per_case": 16,
+    "original_query_charged_separately": true,
+    "threshold": 0.5,
+    "selection": "Four adaptive rounds; minimize score on simulated positives, maximize on simulated benign false-alarm controls; retain original if no improvement.",
+    "input_deduplication": "Per case and model, skip already queried encodings or numeric feature vectors.",
+    "functionality_validation": "HTTP 200, exact content type and per-case response-body SHA256 using loopback connection and logical Host header; no redirects or scripts.",
+    "fixture_application_policy": "Known tenant and opaque case ID, fixed decoded leaf, arbitrary directory aliases; ignores campaign/theme and fragments.",
+    "limitations": [
+      "Constructed .test fixtures and simulated positive/negative behaviours; not verified real phishing pages or natural traffic.",
+      "Byte-identical local HTTP responses validate only this explicitly alias-aware, script-free fixture application.",
+      "Logical hosts are simulated tenants; this does not demonstrate abuse of an actual legitimate provider.",
+      "No live URL or credential-collection functionality is accessed; there is no demonstrated preservation of a real malicious payload.",
+      "A four-round best-so-far score-guided search is evaluated under a maximum 16 new queries per case per model; not a complete adaptive-attacker evaluation.",
+      "All labels and transformations are fixed before inference. Results must remain separate from corpus test metrics and external validation.",
+      "No deployment, local Ghanaian effectiveness, human-user behaviour or universal robustness claim is supported."
+    ],
+    "training_performed": false,
+    "external_test": false,
+    "protocol_written_before_inference": true,
+    "scorer_revision": 2,
+    "feature_extractor": {
+      "generator_sha256": "273819892812656ce8c7c070b3abb0d7be364c356c91d09a61063b236d5ae210",
+      "tldextract_version": "5.3.1",
+      "suffix_list_urls": [],
+      "include_psl_private_domains": true,
+      "numeric_dtype": "float32"
+    },
+    "loopback_http_requests": 20400
+  },
+  "results": {
+    "CNN_LSTM": {
+      "original_fixture_metrics": {
+        "tp": 76,
+        "tn": 8,
+        "fp": 192,
+        "fn": 124,
+        "recall": 0.38,
+        "false_positive_rate": 0.96,
+        "accuracy": 0.21
+      },
+      "worst_case_fixture_metrics": {
+        "tp": 50,
+        "tn": 0,
+        "fp": 200,
+        "fn": 150,
+        "recall": 0.25,
+        "false_positive_rate": 1.0,
+        "accuracy": 0.125
+      },
+      "originally_detected_simulated_positives": 76,
+      "simulated_evasions": 26,
+      "simulated_evasion_rate_among_initially_detected": 0.34210526315789475,
+      "new_score_queries": 5231,
+      "maximum_new_queries_for_one_case": 14,
+      "invalid_functionality_candidates": 0,
+      "unchanged_or_already_queried_inputs_skipped": 1169,
+      "saved_test_score_max_difference": 3.254505920313733e-07,
+      "saved_test_verdict_differences": 0
+    },
+    "RF_full": {
+      "original_fixture_metrics": {
+        "tp": 200,
+        "tn": 0,
+        "fp": 200,
+        "fn": 0,
+        "recall": 1.0,
+        "false_positive_rate": 1.0,
+        "accuracy": 0.5
+      },
+      "worst_case_fixture_metrics": {
+        "tp": 0,
+        "tn": 0,
+        "fp": 200,
+        "fn": 200,
+        "recall": 0.0,
+        "false_positive_rate": 1.0,
+        "accuracy": 0.0
+      },
+      "originally_detected_simulated_positives": 200,
+      "simulated_evasions": 200,
+      "simulated_evasion_rate_among_initially_detected": 1.0,
+      "new_score_queries": 5930,
+      "maximum_new_queries_for_one_case": 16,
+      "invalid_functionality_candidates": 0,
+      "unchanged_or_already_queried_inputs_skipped": 470,
+      "saved_test_score_max_difference": 3.3306690738754696e-16,
+      "saved_test_verdict_differences": 0
+    },
+    "XGB_full": {
+      "original_fixture_metrics": {
+        "tp": 74,
+        "tn": 145,
+        "fp": 55,
+        "fn": 126,
+        "recall": 0.37,
+        "false_positive_rate": 0.275,
+        "accuracy": 0.5475
+      },
+      "worst_case_fixture_metrics": {
+        "tp": 0,
+        "tn": 0,
+        "fp": 200,
+        "fn": 200,
+        "recall": 0.0,
+        "false_positive_rate": 1.0,
+        "accuracy": 0.0
+      },
+      "originally_detected_simulated_positives": 74,
+      "simulated_evasions": 74,
+      "simulated_evasion_rate_among_initially_detected": 1.0,
+      "new_score_queries": 5876,
+      "maximum_new_queries_for_one_case": 16,
+      "invalid_functionality_candidates": 0,
+      "unchanged_or_already_queried_inputs_skipped": 524,
+      "saved_test_score_max_difference": 2.9786682120835906e-08,
+      "saved_test_verdict_differences": 0
+    }
+  }
+}

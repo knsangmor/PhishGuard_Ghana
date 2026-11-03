@@ -1,0 +1,58 @@
+{
+  "seed": 42,
+  "base_config": {
+    "length": 200,
+    "embedding": 64,
+    "kernels": [
+      3,
+      5
+    ],
+    "patience": 12,
+    "strip_scheme": true,
+    "augmentation": true
+  },
+  "experiments": {
+    "retain_scheme": {
+      "strip_scheme": false
+    },
+    "no_augmentation": {
+      "augmentation": false
+    },
+    "length_300": {
+      "length": 300
+    },
+    "embedding_32": {
+      "embedding": 32
+    },
+    "embedding_128": {
+      "embedding": 128
+    },
+    "kernel_3_only": {
+      "kernels": [
+        3
+      ]
+    },
+    "kernel_5_only": {
+      "kernels": [
+        5
+      ]
+    },
+    "patience_6": {
+      "patience": 6
+    }
+  },
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "augmentation_sha256": "a9c037a1546e996c874e5a07c9f58859b625224b639598f30c7837d7420b3f53",
+  "script_sha256": "cced66f52c75f6dcaa3e1755cee7204bea97248fcdc2c16a847f3322f6a6400d",
+  "reference_model_sha256": "cdc771274f9512c5bf24bead1742f5ee3cbc8fa3af182b2bd357ed5d6f0b88e4",
+  "epochs": 50,
+  "batch_size": 256,
+  "learning_rate": 0.001,
+  "reduce_lr_patience": 4,
+  "reference_results": "corrected_results_v3/seed_42",
+  "note": "One-seed exploratory comparisons, fixed settings. Not exhaustive sensitivity or historical before/after replication. Single-kernel variants also change capacity. No-augmentation compares different training sizes/composition. Test outputs are not for choosing new settings."
+}

@@ -1,0 +1,9 @@
+partition,group,rows,empty_netloc,non_https_triggered
+validation,all,7668,4746,7244
+validation,benign,4055,3322,3719
+validation,malicious,3613,1424,3525
+validation,schemeless,4746,4746,4746
+test,all,7653,4597,7079
+test,benign,4056,3532,3757
+test,malicious,3597,1065,3322
+test,schemeless,4597,4597,4595

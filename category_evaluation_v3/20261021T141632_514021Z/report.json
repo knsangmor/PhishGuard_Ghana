@@ -1,0 +1,36 @@
+{
+  "source_sha256": "d83ce942075dd63ed4d11560cfdcd9d512caa3d680e292f22cab484e8f074d01",
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "prediction_sha256": {
+    "42": "ad62e1de2e660addc9dc1103795bfebeb92460900537fb7a5c8577b20573a5f5",
+    "43": "559f73423e3ab7d7642b6404fc1c7a11a054aa322aeea118f82716f5420be39c",
+    "44": "1de13af092f0bd8fa761f5f911f76d6eee51b462b1fc1f8f6d77880accb6dbd2",
+    "45": "bac835e31fb02eb895dbbe17856c3f7d2be440489ee7d018e4cb2dfd393cd6ea",
+    "46": "17dc76860a362f800b507b9c9f457a8a1935972a9628711d0e8cda98fe193238"
+  },
+  "script_sha256": "389da62e0d1dfc26041d6a844e80fbb51d394dd90d1c1ff2745f24db9651b23a",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "threshold": 0.5,
+  "training_performed": false,
+  "score_source": "y_prob.npy, aligned using frozen test labels and URL-matched full predictions",
+  "csv_score_absolute_tolerance": 1e-06,
+  "csv_npy_threshold_verdicts_must_match": true,
+  "category_assignment": "all canonical source matches; same-binary-class multiple categories reported separately",
+  "limitations": [
+    "Inherited corpus categories, not independently verified threats.",
+    "Category recall is sensitivity versus benign, not multiclass classification accuracy.",
+    "Mean and sample SD describe training seeds on a fixed test set, not population confidence intervals.",
+    "Only original v3 models evaluated; broader-data models are a separate experiment.",
+    "No AUC is defined for a single-label category subset."
+  ]
+}

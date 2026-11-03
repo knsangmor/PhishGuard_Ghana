@@ -1,0 +1,27 @@
+{
+  "operation": "Retrospective replay of previously scored URLs on a new working dummy application.",
+  "new_detector_inference": false,
+  "training_performed": false,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "fixture_seed": 7042,
+  "script_sha256": "e6e6075643b1f79ba7a251f82435ab5e237a3eb3bc0057b1cdf8edab8dbeaedb",
+  "oracle": "GET exact page + parsed form + fixed-code POST + exact completion response.",
+  "token_policy": "Fresh per-run in-memory form tokens; constant for each case within the replay; not part of model inputs.",
+  "limitations": [
+    "Fictional pages and simulated labels; not real phishing or natural traffic.",
+    "GET and dummy POST preservation cover only the declared local application.",
+    "Directory aliases and ignored query/fragment fields are intentional application policies.",
+    "No real authentication, credential capture, payment, delivery campaign or legitimate-provider compromise is tested.",
+    "Follow-up designed after examining the earlier controlled-fixture outcomes; exploratory evidence.",
+    "Different model representations and unique-query counts prevent architecture-only claims.",
+    "Repeated fits on fixed cases do not measure uncertainty over real attacks.",
+    "New workflow checks do not make the earlier pages retrospectively functional.",
+    "Existing model scores are reused because the detector inputs are URL strings only; no new detector evaluation was performed."
+  ]
+}

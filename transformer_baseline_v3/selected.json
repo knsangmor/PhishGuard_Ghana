@@ -1,0 +1,10 @@
+{
+  "candidate": 0,
+  "config": {
+    "width": 64,
+    "heads": 4,
+    "blocks": 2,
+    "ff_dim": 128
+  },
+  "validation_average_precision": 0.9459736603398239
+}

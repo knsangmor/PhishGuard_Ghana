@@ -1,0 +1,44 @@
+{
+  "manifest": {
+    "script_sha256": "e58a3903588175f4b58b1de44df68d6f9f88d478ad3c6f457097175af1c51e3b",
+    "partition_sha256": {
+      "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+      "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+      "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+    },
+    "source_sha256": "d006f9ef69906689c39b3b8a85fc37fc4f181a65b28637cb7b6681900aeda2bc",
+    "baseline_protocol_sha256": "82c0b77b69baf96ce9887686ed678efe0aa059a8120f3f25a7bf548bda337fdb",
+    "selected_configs_sha256": "69ddc57ddade9a9660a9f842710e37c59b6ec909b228c15f0c11e904a8bf550e",
+    "reference_files": {
+      "baseline_results_v3\\seed_42\\BiLSTM\\validation_predictions.csv": "57d31aeb7094548b9ffdaceac1120bf89c9462bd108d05c553de67b1a526b9ef",
+      "baseline_results_v3\\seed_42\\BiLSTM\\test_predictions.csv": "2ef988806410f13ee243b6563b2a17079bf6e192f4ab919a98ade85711c36e76",
+      "baseline_results_v3\\seed_42\\BiLSTM\\model.keras": "51506a08bfb2d59d65af3d2d9f995b9962b35e7fefa9f1c0d3247be12c3ab526",
+      "baseline_results_v3\\seed_43\\BiLSTM\\validation_predictions.csv": "82222a44926383a6c62278c289f1d0097a75ba76bb8a9510db4680cab60ef679",
+      "baseline_results_v3\\seed_43\\BiLSTM\\test_predictions.csv": "59ca898372f75ce700b1c8bad68f20a5bab76c18520426368cc766121ea886b2",
+      "baseline_results_v3\\seed_43\\BiLSTM\\model.keras": "c75a8f1325166efd240f56a623ae8876ca7e533f2a4c6aafcdda98d2c99cb250",
+      "baseline_results_v3\\seed_44\\BiLSTM\\validation_predictions.csv": "1440da49624d1bbd2859f86f351f2fe113987c15199dcf508f19d6b6d6c860b6",
+      "baseline_results_v3\\seed_44\\BiLSTM\\test_predictions.csv": "eda4d973b4a7ec55ec760ab63d441a653aede29878fe67e9c09d026a11c91499",
+      "baseline_results_v3\\seed_44\\BiLSTM\\model.keras": "dd42461eecbd5ead94a073993c984cb69f4b4a2d985fee736bcad0775071847c",
+      "baseline_results_v3\\seed_45\\BiLSTM\\validation_predictions.csv": "cfb88ea1330edf223bccf418357b1d3d0a38493edd6b9bae71e68382296af550",
+      "baseline_results_v3\\seed_45\\BiLSTM\\test_predictions.csv": "d64495fe8efe49fe501f4d558d4ed9ab47872d4ce1790d24d779479fa6cf4a51",
+      "baseline_results_v3\\seed_45\\BiLSTM\\model.keras": "743d01dd611880b828da8b7a5a2bc1c7e865aab654f016bc41a887d72b7e7611",
+      "baseline_results_v3\\seed_46\\BiLSTM\\validation_predictions.csv": "722c47cbb14ce773129b9a6f988fdcbd458e767ef374af95d8d59211aa458ce8",
+      "baseline_results_v3\\seed_46\\BiLSTM\\test_predictions.csv": "1a64153213867bdb79da1d81d8ab093fe5c624dbc7a5765cf9bdf895cc8ec8c5",
+      "baseline_results_v3\\seed_46\\BiLSTM\\model.keras": "98cb63d4bac3b9ca35ef9c00c9063d233a7b09ef157de618dfd16405ac0bdfa5"
+    },
+    "control": "mask_zero=True; same selected 128 units, 64-dimensional embedding, Adam .001, batch256, max50 epochs, val_loss patience12, ReduceLR patience4 factor.5 min1e-5",
+    "selection": "best validation loss within each run; no new architecture tuning; threshold .5",
+    "scope": "Exploratory five-seed control on previously examined fixed partitions; not new independent confirmation."
+  },
+  "environment": {
+    "tensorflow": "2.16.2",
+    "keras": "3.13.2",
+    "numpy": "1.26.4",
+    "pandas": "3.0.1",
+    "devices": [
+      "/physical_device:CPU:0"
+    ]
+  },
+  "seed": 42,
+  "test_scored": false
+}

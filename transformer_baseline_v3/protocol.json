@@ -1,0 +1,30 @@
+{
+  "script_sha256": "0d013c89d312af97a31f27c49c589712849748768cecaabc50fcade6155cb625",
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "candidates": [
+    {
+      "width": 64,
+      "heads": 4,
+      "blocks": 2,
+      "ff_dim": 128
+    },
+    {
+      "width": 96,
+      "heads": 4,
+      "blocks": 2,
+      "ff_dim": 192
+    }
+  ],
+  "selection": "seed42 validation average precision at minimum-validation-loss checkpoint; first candidate breaks ties",
+  "training": "Adam .001, batch256, max50, early stopping val_loss patience12 restore best; LR half after4, minimum1e-5",
+  "encoding": "scheme stripped, lowercase, first200 ASCII1..95 unknown96 rightpad0",
+  "scope": "compact from-scratch character Transformer reference; not URLBERT/TransURL reproduction, no pretraining",
+  "mask": "padding keys excluded from attention; padding excluded from mean pooling",
+  "python": "3.11.9",
+  "tensorflow": "2.16.2",
+  "keras": "3.13.2"
+}

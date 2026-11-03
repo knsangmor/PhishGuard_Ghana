@@ -1,0 +1,92 @@
+{
+  "complete": false,
+  "results": {
+    "CNN_LSTM": {
+      "original_fixture_metrics": {
+        "tp": 154,
+        "tn": 25,
+        "fp": 175,
+        "fn": 46,
+        "recall": 0.77,
+        "false_positive_rate": 0.875,
+        "accuracy": 0.4475
+      },
+      "worst_case_fixture_metrics": {
+        "tp": 49,
+        "tn": 0,
+        "fp": 200,
+        "fn": 151,
+        "recall": 0.245,
+        "false_positive_rate": 1.0,
+        "accuracy": 0.1225
+      },
+      "originally_detected_simulated_positives": 154,
+      "simulated_evasions": 105,
+      "simulated_evasion_rate_among_initially_detected": 0.6818181818181818,
+      "new_score_queries": 4758,
+      "maximum_new_queries_for_one_case": 14,
+      "invalid_functionality_candidates": 0,
+      "unchanged_or_already_queried_inputs_skipped": 1642,
+      "saved_test_score_max_difference": 6.279459381364205e-07,
+      "saved_test_verdict_differences": 0
+    },
+    "RF_full": {
+      "original_fixture_metrics": {
+        "tp": 200,
+        "tn": 0,
+        "fp": 200,
+        "fn": 0,
+        "recall": 1.0,
+        "false_positive_rate": 1.0,
+        "accuracy": 0.5
+      },
+      "worst_case_fixture_metrics": {
+        "tp": 2,
+        "tn": 0,
+        "fp": 200,
+        "fn": 198,
+        "recall": 0.01,
+        "false_positive_rate": 1.0,
+        "accuracy": 0.005
+      },
+      "originally_detected_simulated_positives": 200,
+      "simulated_evasions": 198,
+      "simulated_evasion_rate_among_initially_detected": 0.99,
+      "new_score_queries": 6093,
+      "maximum_new_queries_for_one_case": 16,
+      "invalid_functionality_candidates": 0,
+      "unchanged_or_already_queried_inputs_skipped": 307,
+      "saved_test_score_max_difference": 3.3306690738754696e-16,
+      "saved_test_verdict_differences": 0
+    },
+    "XGB_full": {
+      "original_fixture_metrics": {
+        "tp": 74,
+        "tn": 145,
+        "fp": 55,
+        "fn": 126,
+        "recall": 0.37,
+        "false_positive_rate": 0.275,
+        "accuracy": 0.5475
+      },
+      "worst_case_fixture_metrics": {
+        "tp": 0,
+        "tn": 0,
+        "fp": 200,
+        "fn": 200,
+        "recall": 0.0,
+        "false_positive_rate": 1.0,
+        "accuracy": 0.0
+      },
+      "originally_detected_simulated_positives": 74,
+      "simulated_evasions": 74,
+      "simulated_evasion_rate_among_initially_detected": 1.0,
+      "new_score_queries": 5876,
+      "maximum_new_queries_for_one_case": 16,
+      "invalid_functionality_candidates": 0,
+      "unchanged_or_already_queried_inputs_skipped": 524,
+      "saved_test_score_max_difference": 2.9786682120835906e-08,
+      "saved_test_verdict_differences": 0
+    }
+  }
+}

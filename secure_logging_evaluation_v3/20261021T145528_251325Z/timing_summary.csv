@@ -1,0 +1,5 @@
+stage,algorithm,repeats,mean_ms_per_record,sample_sd_ms_per_record
+chain_construction_in_memory,sha256,5,0.040006495999999996,0.004484734792680612
+chain_construction_in_memory,hmac_sha256,5,0.049883932,0.007833593835559769
+verification_with_checkpoint_in_memory,sha256,5,0.030862152,0.007898111842239257
+verification_with_checkpoint_in_memory,hmac_sha256,5,0.045131472,0.0078269764531216

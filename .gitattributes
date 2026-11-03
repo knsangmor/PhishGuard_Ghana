@@ -15,3 +15,29 @@ dataset_fix_outputs_v3/*.csv -text
 corrected_results_v3/** -text
 
 baseline_results_v3/** -text
+
+category_evaluation_v3/** -text
+
+rule_evaluation_v3/** -text
+
+shortcut_checks_v3/** -text
+
+controlled_experiments_v3/** -text
+
+cpu_benchmarks_v3/** -text
+
+adaptive_evasion_v3/** -text
+
+attribution_evaluation_v3/** -text
+
+secure_logging_evaluation_v3/** -text
+
+m2_popularity_audit/** -text
+
+controlled_robustness_v1/** -text
+
+workflow_preservation_audit/** -text
+
+masked_bilstm_control_v1/** -text
+
+transformer_baseline_v3/** -text

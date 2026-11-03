@@ -1,0 +1,40 @@
+{
+  "measurements": [
+    {
+      "model": "cnn_lstm",
+      "batch_size": 1,
+      "mean": 19.040833437566107,
+      "std": 0.5435917178838683
+    },
+    {
+      "model": "cnn_lstm",
+      "batch_size": 256,
+      "mean": 1.3652292774060704,
+      "std": 0.0758782756451207
+    },
+    {
+      "model": "transformer",
+      "batch_size": 1,
+      "mean": 16.74218496091271,
+      "std": 0.43091232153328823
+    },
+    {
+      "model": "transformer",
+      "batch_size": 256,
+      "mean": 6.91106568404466,
+      "std": 0.2508088499904229
+    }
+  ],
+  "models_sha256": {
+    "cnn_lstm": "cdc771274f9512c5bf24bead1742f5ee3cbc8fa3af182b2bd357ed5d6f0b88e4",
+    "transformer": "ac837d286f7dafe21f2e212ae033d9b27bd0f3dad68653dc4add411128f260e9"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+  "limitations": [
+    "Warm CPU model.predict timing; excludes URL encoding, loading, explanations and logging.",
+    "Batch1 is amortized predict-call throughput, not independent single-request latency.",
+    "Shared machine load can affect results; five alternated-order repeats.",
+    "Compact reference only; cannot establish costs of published transformers."
+  ]
+}

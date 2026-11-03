@@ -1,0 +1,80 @@
+{
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "input_sha256": {
+    "model_hash_v3.py": "cc5ed206c7350cf9bf9339b78f8a5e0b626a69e202fbfb2ef80c3e38c398d7c8",
+    "corrected_results_v3\\seed_42\\predictions.csv": "ad62e1de2e660addc9dc1103795bfebeb92460900537fb7a5c8577b20573a5f5",
+    "corrected_results_v3\\seed_42\\y_prob.npy": "56b962dad1cff9d6b3edd8219ec397273ca37cd679a5f860353c8391caeb7140",
+    "corrected_results_v3\\seed_42\\y_test.npy": "aef5a46cc3381a544c313dd9995a973124ab762c297695d546b587b3177e67bf",
+    "corrected_results_v3\\seed_43\\predictions.csv": "559f73423e3ab7d7642b6404fc1c7a11a054aa322aeea118f82716f5420be39c",
+    "corrected_results_v3\\seed_43\\y_prob.npy": "ab2ec2b68af851066bf9d7bdca5f8078bb4134acaea59bebee8c4c9d0ccfccc8",
+    "corrected_results_v3\\seed_43\\y_test.npy": "aef5a46cc3381a544c313dd9995a973124ab762c297695d546b587b3177e67bf",
+    "corrected_results_v3\\seed_44\\predictions.csv": "1de13af092f0bd8fa761f5f911f76d6eee51b462b1fc1f8f6d77880accb6dbd2",
+    "corrected_results_v3\\seed_44\\y_prob.npy": "3b866651ff65ce3626ecd549a07ceef8d7eca45d09626451d61cba1e2d87e5c1",
+    "corrected_results_v3\\seed_44\\y_test.npy": "aef5a46cc3381a544c313dd9995a973124ab762c297695d546b587b3177e67bf",
+    "corrected_results_v3\\seed_45\\predictions.csv": "bac835e31fb02eb895dbbe17856c3f7d2be440489ee7d018e4cb2dfd393cd6ea",
+    "corrected_results_v3\\seed_45\\y_prob.npy": "0358c96abed1889c9c26c8f94b1f4ccbb83b93e7778821805143815ec4e96ef2",
+    "corrected_results_v3\\seed_45\\y_test.npy": "aef5a46cc3381a544c313dd9995a973124ab762c297695d546b587b3177e67bf",
+    "corrected_results_v3\\seed_46\\predictions.csv": "17dc76860a362f800b507b9c9f457a8a1935972a9628711d0e8cda98fe193238",
+    "corrected_results_v3\\seed_46\\y_prob.npy": "8ca6816597c0d44d6e14ba0d585294935e68a9eb5c072ed856882d8ea808eedf",
+    "corrected_results_v3\\seed_46\\y_test.npy": "aef5a46cc3381a544c313dd9995a973124ab762c297695d546b587b3177e67bf"
+  },
+  "script_sha256": "2e1102b86c854887980d902a742be218f96616b3996d80754e3d829774131bd6",
+  "rule_ast_sha256": "52660660af6e7208012ff1168c35ead3a2b423764ceb6bdd950a919b6ca3a04d",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "threshold": 0.5,
+  "rules": {
+    "_BRANDS": [
+      "mtn",
+      "vodafone",
+      "airtel",
+      "ecobank",
+      "gcb",
+      "absa",
+      "bog"
+    ],
+    "_FREE_TLDS": [
+      ".ml",
+      ".tk",
+      ".cf",
+      ".ga",
+      ".gq",
+      ".xyz",
+      ".top"
+    ],
+    "_SHORTENERS": [
+      "bit.ly",
+      "tinyurl.com",
+      "ow.ly",
+      "rb.gy",
+      "is.gd"
+    ]
+  },
+  "test_rows": 7653,
+  "training_performed": false,
+  "inference_performed": false,
+  "score_source": "saved y_prob.npy; CSV tolerance 1e-6, verdict agreement required",
+  "rules_modified": false,
+  "display_limit": 3,
+  "limitations": [
+    "Rules are independent annotations, not explanations of neural computation.",
+    "Treating a trigger as a positive flag is a diagnostic; rules did not determine stored verdicts.",
+    "No threshold, combined rule or model was tuned on these results.",
+    "All-rule and non-HTTPS-excluded summaries are descriptive, not validated replacement detectors.",
+    "No analyst user study, causal explanation or incremental benefit from combining scores and rules was tested.",
+    "Shortener and brand matches use substrings; IP regex is not IP validation; non-HTTPS includes missing schemes.",
+    "Original urlparse(netloc) behaviour is preserved, including empty hostnames for many schemeless URLs.",
+    "Positives mix phishing, malware and defacement. Corpus precision is not deployment precision.",
+    "Examples are deterministic hash-selected cases, not representative estimates or live-verified labels.",
+    "Original rationale uses PHISHING and probability wording; these labels do not establish phishing-only detection or calibrated confidence."
+  ]
+}
