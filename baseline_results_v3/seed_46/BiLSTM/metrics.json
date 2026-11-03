@@ -1,0 +1,29 @@
+{
+  "seed": 46,
+  "task": "BiLSTM",
+  "dataset_version": "v3",
+  "partition_hashes": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "selected_config": {
+    "candidate": 1,
+    "config": {
+      "units": 128
+    },
+    "validation_average_precision": 0.9666996754229014,
+    "kind": "BiLSTM",
+    "variant": null
+  },
+  "threshold": 0.5,
+  "test_metrics": {
+    "accuracy": 0.8767803475761139,
+    "precision": 0.8886936145284124,
+    "recall": 0.8434806783430636,
+    "f1_score": 0.8654970760233918,
+    "auc_roc": 0.9367434592381664,
+    "average_precision": 0.940986505248556
+  },
+  "input_columns": "scheme-stripped 200-character sequence"
+}

@@ -1,0 +1,19 @@
+{
+  "tranco_sha256": "3a2f5b2a5eec2049cdf5de297507a6611789c2d0da12d2da6cfbbf461f8a76d8",
+  "tranco_bytes": 22715486,
+  "tranco_rows": 1000000,
+  "sampled_domains": 1500,
+  "seed": 42,
+  "paths_per_domain": 2,
+  "candidate_rows": 2244,
+  "rejected_existing_key": 0,
+  "rejected_batch_key": 0,
+  "retained_rows": 2244,
+  "saved_rows": 2244,
+  "membership_multiset_matches_saved": true,
+  "historical_execution_proven": false,
+  "note": "Replay against reconstructed source-sampled base membership and exact Tranco LFS target; output membership can match while row order differs because the generator iterates sets.",
+  "template_entries_drawn": 2247,
+  "within_domain_repeated_paths_collapsed": 3,
+  "sampled_unique_domains": 1500
+}

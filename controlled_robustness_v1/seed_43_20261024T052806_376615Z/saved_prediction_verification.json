@@ -1,0 +1,14 @@
+{
+  "RF_full": {
+    "saved_test_score_max_difference": 3.3306690738754696e-16,
+    "saved_test_verdict_differences": 0
+  },
+  "XGB_full": {
+    "saved_test_score_max_difference": 2.9786682120835906e-08,
+    "saved_test_verdict_differences": 0
+  },
+  "CNN_LSTM": {
+    "saved_test_score_max_difference": 4.4094924922521983e-07,
+    "saved_test_verdict_differences": 0
+  }
+}

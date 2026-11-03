@@ -1,0 +1,9 @@
+{
+  "candidate": 0,
+  "config": {
+    "n_estimators": 200,
+    "max_depth": null,
+    "min_samples_leaf": 1
+  },
+  "validation_average_precision": 0.9566633284193516
+}

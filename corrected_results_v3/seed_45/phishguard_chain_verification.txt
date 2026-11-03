@@ -1,0 +1,19 @@
+  PHISHGUARD-GH HASH-CHAIN VERIFICATION REPORT
+=================================================================
+  Generated  : 2026-10-14T19:08:59.850180+00:00
+  System     : PhishGuard-GH vCNN-LSTM 
+  Legal      : Act 772 Ss.7-11 [Electronic Records]; NRCD 323 S.135 [Evidence]; Act 1038 S.4(c) 
+
+  INTEGRITY ANCHORS
+  Dataset SHA256     : b4cf485ab2e27235b57da4ef7ce2e7ee47e0db23d2b532fb...
+  Model SHA256       : 553f1285d36d977d894fa43a75d6c52e0134599defa43732...
+  Predictions SHA256 : bac835e31fb02eb895dbbe17856c3f7d2be440489ee7d018...
+
+  CHAIN STATISTICS
+  Total records  : 50,985
+  Phishing       : 23,589
+  Legitimate     : 27,396
+
+  Genesis hash   : 00000000000000000000000000000000...
+  Final hash     : 8197dad23acd4c850f514491510b4276...
+  Chain status   : VERIFIED  ALL LINKS INTACT

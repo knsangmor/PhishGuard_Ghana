@@ -1,0 +1,20 @@
+{
+  "model": "domurls_bert",
+  "batch_size": 256,
+  "urls": 512,
+  "seconds": 133.06817690003663,
+  "ms_per_url": 259.89878300788405,
+  "max_absolute_score_difference": 4.827976226806641e-06,
+  "threshold_0_5_disagreements": 0,
+  "comparison_atol": 0.0001,
+  "versions": {
+    "python": "3.11.9",
+    "numpy": "1.26.4",
+    "torch": "2.2.2+cpu",
+    "transformers": "4.39.3",
+    "tokenizers": "0.15.2",
+    "safetensors": "0.4.3"
+  },
+  "mode": "timing",
+  "threads": 6
+}

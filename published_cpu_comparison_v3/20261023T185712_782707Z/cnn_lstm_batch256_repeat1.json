@@ -1,0 +1,18 @@
+{
+  "model": "cnn_lstm",
+  "batch_size": 256,
+  "urls": 512,
+  "seconds": 0.7460435000248253,
+  "ms_per_url": 1.457116210985987,
+  "max_absolute_score_difference": 6.854534149169922e-07,
+  "threshold_0_5_disagreements": 0,
+  "comparison_atol": 0.0001,
+  "versions": {
+    "python": "3.11.9",
+    "numpy": "1.26.4",
+    "tensorflow": "2.18.0",
+    "keras": "3.13.2"
+  },
+  "mode": "timing",
+  "threads": 6
+}

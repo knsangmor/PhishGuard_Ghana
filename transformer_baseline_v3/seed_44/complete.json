@@ -1,0 +1,16 @@
+{
+  "config": {
+    "width": 64,
+    "heads": 4,
+    "blocks": 2,
+    "ff_dim": 128
+  },
+  "seed": 44,
+  "training_seconds": 9210.142826099996,
+  "epochs": 17,
+  "best_epoch": 5,
+  "validation_average_precision": 0.9427669406671422,
+  "parameters": 90177,
+  "model_sha256": "d4880614c735e13a3f62bbfa72ba7f4af757c20ac57f269741e215e0b8b21a12",
+  "validation_scores_sha256": "433b1d239ce20d3af08c46268c215cb11cda196d97f022851f8f8382da28cddc"
+}

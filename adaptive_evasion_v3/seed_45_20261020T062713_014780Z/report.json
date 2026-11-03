@@ -1,0 +1,23 @@
+{
+  "seed": 45,
+  "threshold": 0.5,
+  "maximum_candidate_queries_per_url": 8,
+  "selection": "minimum probability, original retained if all candidates score higher; non-sequential score-guided search",
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "model_sha256": "269e0341943a542bc4da74ac5aae355f079475d602b2c9ab20b23bc73611edb1",
+  "test_rows": 7653,
+  "malicious_test_rows": 3597,
+  "eligible_malicious": 3592,
+  "candidate_queries": 27619,
+  "originally_detected_malicious": 2997,
+  "originally_detected_and_eligible": 2992,
+  "synthetic_evasions": 102,
+  "synthetic_evasion_rate_among_detected_eligible": 0.03409090909090909,
+  "original_recall": 0.8331943286071727,
+  "worst_case_synthetic_recall_all_malicious": 0.804837364470392,
+  "limitation": "Synthetic offline score-guided probes, with inherited malicious labels. Fragments may affect client-side routing; percent-encoding may affect server handling. No live malicious functionality or label preservation was validated. This is not a complete adaptive-attacker evaluation or external test."
+}

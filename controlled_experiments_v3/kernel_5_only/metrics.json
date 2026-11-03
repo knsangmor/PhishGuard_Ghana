@@ -1,0 +1,41 @@
+{
+  "experiment": "kernel_5_only",
+  "seed": 42,
+  "config": {
+    "length": 200,
+    "embedding": 64,
+    "kernels": [
+      5
+    ],
+    "patience": 12,
+    "strip_scheme": true,
+    "augmentation": true
+  },
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "training_rows": 35664,
+  "model_parameters": 154433,
+  "training_seconds": 5270.200889799977,
+  "best_epoch": 16,
+  "metrics": {
+    "validation": {
+      "accuracy": 0.9141888367240479,
+      "precision": 0.9256698357821953,
+      "recall": 0.8892886797675063,
+      "f1_score": 0.9071146245059288,
+      "auc_roc": 0.9690323646320333,
+      "average_precision": 0.9695487233428032
+    },
+    "test": {
+      "accuracy": 0.8872337645367829,
+      "precision": 0.9170225747406956,
+      "recall": 0.835696413678065,
+      "f1_score": 0.8744727272727273,
+      "auc_roc": 0.9472910254491057,
+      "average_precision": 0.9524065334135402
+    }
+  }
+}

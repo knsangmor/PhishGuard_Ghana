@@ -1,0 +1,54 @@
+{
+  "seed": 46,
+  "task": "XGB_no_scheme",
+  "dataset_version": "v3",
+  "partition_hashes": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "selected_config": {
+    "candidate": 1,
+    "config": {
+      "n_estimators": 200,
+      "max_depth": 6,
+      "learning_rate": 0.1
+    },
+    "validation_average_precision": 0.9516736603167072,
+    "kind": "XGB",
+    "variant": "no_scheme"
+  },
+  "threshold": 0.5,
+  "test_metrics": {
+    "accuracy": 0.8908924604730171,
+    "precision": 0.8787712561711465,
+    "recall": 0.890742285237698,
+    "f1_score": 0.884716277785448,
+    "auc_roc": 0.9587758111487821,
+    "average_precision": 0.9571729608745448
+  },
+  "input_columns": [
+    "url_length",
+    "num_dots",
+    "num_hyphens",
+    "num_underscores",
+    "num_slashes",
+    "num_at",
+    "num_question",
+    "num_equals",
+    "num_ampersand",
+    "num_percent",
+    "digit_ratio",
+    "alpha_ratio",
+    "url_entropy",
+    "is_ip_hostname",
+    "subdomain_depth",
+    "is_free_tld",
+    "is_trusted_gh_tld",
+    "brand_injected",
+    "brand_on_free_tld",
+    "uses_shortener",
+    "has_at_symbol",
+    "path_length"
+  ]
+}

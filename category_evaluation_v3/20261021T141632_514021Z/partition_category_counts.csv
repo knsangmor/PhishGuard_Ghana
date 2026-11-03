@@ -1,0 +1,16 @@
+partition,category,label,rows
+train,benign,0,17250
+train,defacement,1,7568
+train,generated_benign,0,1636
+train,malware,1,2349
+train,phishing,1,6861
+validation,benign,0,3726
+validation,defacement,1,1564
+validation,generated_benign,0,329
+validation,malware,1,306
+validation,phishing,1,1743
+test,benign,0,3777
+test,defacement,1,1771
+test,generated_benign,0,279
+test,malware,1,437
+test,phishing,1,1389

@@ -1,0 +1,145 @@
+{
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "threshold": 0.5,
+  "rows": 7653,
+  "domains": 3315,
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "rank_definition": {
+    "exact_host": "Case-insensitive hostname, trailing dot stripped, one leading www removed; exact Tranco match only.",
+    "domain": "Public-suffix registrable domain, private suffixes included; rank by exact Tranco match of that domain; IP by address."
+  },
+  "common_support_method": "Original-source URLs only, separately by binary class; exact strata for source category, length band, path form and www indicator. Keep strata containing both rank groups, with at least one URL in each. Weight stratum-specific positive prediction rates by pooled stratum URL count. Sparse cells and unmeasured confounding remain; not a causal effect.",
+  "tldextract_version": "5.3.1",
+  "psl": "bundled offline snapshot; no network access; private suffixes included",
+  "inputs": {
+    "train": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/dataset_fix_outputs_v3/train.csv",
+      "sha256": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f"
+    },
+    "validation": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/dataset_fix_outputs_v3/validation.csv",
+      "sha256": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e"
+    },
+    "test": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/dataset_fix_outputs_v3/test.csv",
+      "sha256": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+    },
+    "tranco": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/top-1m_recovered.csv",
+      "sha256": "3a2f5b2a5eec2049cdf5de297507a6611789c2d0da12d2da6cfbbf461f8a76d8"
+    },
+    "source": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/malicious_phish.csv",
+      "sha256": "d83ce942075dd63ed4d11560cfdcd9d512caa3d680e292f22cab484e8f074d01"
+    },
+    "augmentation": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/modern_legit_augmentation.csv",
+      "sha256": "a9c037a1546e996c874e5a07c9f58859b625224b639598f30c7837d7420b3f53"
+    },
+    "seed_42_csv": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_42/test_predictions.csv",
+      "sha256": "b42247984814bf15008e9426d8db67291c8c2b23539c42719fbc633f1321440c"
+    },
+    "seed_42_y_prob.npy": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_42/y_prob.npy",
+      "sha256": "56b962dad1cff9d6b3edd8219ec397273ca37cd679a5f860353c8391caeb7140"
+    },
+    "seed_42_y_test.npy": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_42/y_test.npy",
+      "sha256": "aef5a46cc3381a544c313dd9995a973124ab762c297695d546b587b3177e67bf"
+    },
+    "seed_43_csv": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_43/test_predictions.csv",
+      "sha256": "7444c2afce335899347d6ffedcfb5f3ba75701c2b3112589eb324b41675fbcc4"
+    },
+    "seed_43_y_prob.npy": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_43/y_prob.npy",
+      "sha256": "ab2ec2b68af851066bf9d7bdca5f8078bb4134acaea59bebee8c4c9d0ccfccc8"
+    },
+    "seed_43_y_test.npy": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_43/y_test.npy",
+      "sha256": "aef5a46cc3381a544c313dd9995a973124ab762c297695d546b587b3177e67bf"
+    },
+    "seed_44_csv": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_44/test_predictions.csv",
+      "sha256": "bed30185837d3f6e3e4baf8c56119718721fa07caefe88f3747db582abf8a6ad"
+    },
+    "seed_44_y_prob.npy": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_44/y_prob.npy",
+      "sha256": "3b866651ff65ce3626ecd549a07ceef8d7eca45d09626451d61cba1e2d87e5c1"
+    },
+    "seed_44_y_test.npy": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_44/y_test.npy",
+      "sha256": "aef5a46cc3381a544c313dd9995a973124ab762c297695d546b587b3177e67bf"
+    },
+    "seed_45_csv": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_45/test_predictions.csv",
+      "sha256": "07069d8e153cedbfe02e074c76ad5a94af7427ed5094dcc19e19c21190de7fed"
+    },
+    "seed_45_y_prob.npy": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_45/y_prob.npy",
+      "sha256": "0358c96abed1889c9c26c8f94b1f4ccbb83b93e7778821805143815ec4e96ef2"
+    },
+    "seed_45_y_test.npy": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_45/y_test.npy",
+      "sha256": "aef5a46cc3381a544c313dd9995a973124ab762c297695d546b587b3177e67bf"
+    },
+    "seed_46_csv": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_46/test_predictions.csv",
+      "sha256": "8e8f3d2ea672d3d5cefc9df72175892425188fbb15e517a27e7a5e17ad07464f"
+    },
+    "seed_46_y_prob.npy": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_46/y_prob.npy",
+      "sha256": "8ca6816597c0d44d6e14ba0d585294935e68a9eb5c072ed856882d8ea808eedf"
+    },
+    "seed_46_y_test.npy": {
+      "path": "/workspace/scratch/139f54f94be9/m2_work/data/corrected_results_v3/seed_46/y_test.npy",
+      "sha256": "aef5a46cc3381a544c313dd9995a973124ab762c297695d546b587b3177e67bf"
+    }
+  },
+  "saved_score_checks": {
+    "42": {
+      "csv_npy_max_difference": 2.980117796980153e-08,
+      "verdict_differences": 0
+    },
+    "43": {
+      "csv_npy_max_difference": 2.9796600298226394e-08,
+      "verdict_differences": 0
+    },
+    "44": {
+      "csv_npy_max_difference": 2.9740142792888946e-08,
+      "verdict_differences": 0
+    },
+    "45": {
+      "csv_npy_max_difference": 2.9796600298226394e-08,
+      "verdict_differences": 0
+    },
+    "46": {
+      "csv_npy_max_difference": 2.979507440770135e-08,
+      "verdict_differences": 0
+    }
+  },
+  "script_sha256": "56e007e08c8f5d4486983e93206961edce29cb8b1de7d3d4d464c42e91075e76",
+  "training_performed": false,
+  "inference_performed": false,
+  "limitations": [
+    "Exploratory analysis after inspecting earlier tests; no confirmatory hypothesis test.",
+    "Historical Tranco rank is a popularity proxy, not measured traffic, legitimacy or campaign prevalence; historical daily-list ID unavailable.",
+    "The list also supplied augmentation domains, so provenance and rank are dependent; generated URLs are reported separately.",
+    "Absent-from-list does not mean unpopular or malicious. No causal popularity effect is established.",
+    "Length, source category, domain and formatting can remain confounded; joint strata are descriptive and may be sparse.",
+    "www, slash and appended-path changes may alter the resource; verdict flips are not transformed accuracy or real attack success.",
+    "Seed SDs concern repeated fits on fixed URLs, not independent URLs/domains or traffic uncertainty.",
+    "No original dataset, model, feature file or result is modified."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "seed": 45,
+  "task": "RF_full",
+  "dataset_version": "v3",
+  "partition_hashes": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "selected_config": {
+    "candidate": 1,
+    "config": {
+      "n_estimators": 200,
+      "max_depth": 20,
+      "min_samples_leaf": 2
+    },
+    "validation_average_precision": 0.9620162307171318,
+    "kind": "RF",
+    "variant": "full"
+  },
+  "threshold": 0.5,
+  "test_metrics": {
+    "accuracy": 0.8856657519926826,
+    "precision": 0.8747246696035242,
+    "recall": 0.8832360300250208,
+    "f1_score": 0.8789597454696362,
+    "auc_roc": 0.958645408539551,
+    "average_precision": 0.957280383208016
+  },
+  "input_columns": [
+    "url_length",
+    "num_dots",
+    "num_hyphens",
+    "num_underscores",
+    "num_slashes",
+    "num_at",
+    "num_question",
+    "num_equals",
+    "num_ampersand",
+    "num_percent",
+    "digit_ratio",
+    "alpha_ratio",
+    "url_entropy",
+    "is_ip_hostname",
+    "subdomain_depth",
+    "is_free_tld",
+    "is_trusted_gh_tld",
+    "brand_injected",
+    "brand_on_free_tld",
+    "uses_shortener",
+    "has_at_symbol",
+    "is_https",
+    "path_length"
+  ]
+}

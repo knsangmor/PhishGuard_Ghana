@@ -1,0 +1,347 @@
+{
+  "source_file": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\corrected_results_v3\\seed_42\\phishguard_evidence_chain.jsonl",
+  "source_sha256": "2c33966d2aca848697de190d5722f4c64bef2f7cace449e1abd701beec40051e",
+  "reference_record_count": 50985,
+  "reference_final_hash": "774bec05a34d5ea0de7195cf99412d7a032e3df44f8d500bf2142b05a7195dc5",
+  "anchor_origin": "Captured locally from source before simulated attacks; not externally authenticated",
+  "limitations": "A plain hash chain cannot detect valid-prefix truncation, absence of the entire chain, or an attacker who rewrites data and recomputes all hashes. A separately protected and authenticated expected count/final hash is needed.",
+  "downstream_status": "A broken link invalidates chain-wide assurance; later records may still have individually valid hashes.",
+  "results": [
+    {
+      "scenario": "untampered",
+      "records": 50985,
+      "internal_check_passed": true,
+      "reference_anchor_check_passed": true,
+      "first_failure_position": null,
+      "reason": "internally consistent"
+    },
+    {
+      "scenario": "edit_first_seq_no",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_first_url",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_first_verdict",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_first_confidence",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_first_rationale",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_first_timestamp",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_first_model",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_first_legal",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_first_prev_hash",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "link mismatch"
+    },
+    {
+      "scenario": "edit_first_record_hash",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "delete_first",
+      "records": 50984,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "link mismatch"
+    },
+    {
+      "scenario": "edit_middle_seq_no",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_middle_url",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_middle_verdict",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_middle_confidence",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_middle_rationale",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_middle_timestamp",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_middle_model",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_middle_legal",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_middle_prev_hash",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "link mismatch"
+    },
+    {
+      "scenario": "edit_middle_record_hash",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "delete_middle",
+      "records": 50984,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "link mismatch"
+    },
+    {
+      "scenario": "edit_last_seq_no",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50985,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_last_url",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50985,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_last_verdict",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50985,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_last_confidence",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50985,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_last_rationale",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50985,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_last_timestamp",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50985,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_last_model",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50985,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_last_legal",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50985,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "edit_last_prev_hash",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50985,
+      "reason": "link mismatch"
+    },
+    {
+      "scenario": "edit_last_record_hash",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50985,
+      "reason": "record hash mismatch"
+    },
+    {
+      "scenario": "delete_last",
+      "records": 50984,
+      "internal_check_passed": true,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": null,
+      "reason": "internally consistent"
+    },
+    {
+      "scenario": "swap_adjacent_first",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 1,
+      "reason": "link mismatch"
+    },
+    {
+      "scenario": "swap_adjacent_middle",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 25493,
+      "reason": "link mismatch"
+    },
+    {
+      "scenario": "swap_adjacent_last",
+      "records": 50985,
+      "internal_check_passed": false,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": 50984,
+      "reason": "link mismatch"
+    },
+    {
+      "scenario": "truncate_tail_1",
+      "records": 50984,
+      "internal_check_passed": true,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": null,
+      "reason": "internally consistent"
+    },
+    {
+      "scenario": "truncate_tail_10",
+      "records": 50975,
+      "internal_check_passed": true,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": null,
+      "reason": "internally consistent"
+    },
+    {
+      "scenario": "truncate_tail_5098",
+      "records": 45887,
+      "internal_check_passed": true,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": null,
+      "reason": "internally consistent"
+    },
+    {
+      "scenario": "remove_entire_chain",
+      "records": 0,
+      "internal_check_passed": true,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": null,
+      "reason": "internally consistent"
+    },
+    {
+      "scenario": "edit_and_recompute_all_hashes",
+      "records": 50985,
+      "internal_check_passed": true,
+      "reference_anchor_check_passed": false,
+      "first_failure_position": null,
+      "reason": "internally consistent"
+    }
+  ]
+}

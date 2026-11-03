@@ -1,0 +1,89 @@
+{
+  "seed": 45,
+  "training_rows": 51664,
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "prepared_files_sha256": {
+    "train.csv": "5768ed99d8f785dcaa376284952720dcf74aef86642c7015d933d6fdb42b54bc",
+    "validation_v3.csv": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "validation_phiusiil_development.csv": "a328627ca4707b4f2edda9750a53b901a0409b742224cd2584d174c8599ce680",
+    "excluded_phiusiil.csv": "76bea42af818fe2a1ea40a998460f2101a743e50045d162f28d06fe4ba39bc85"
+  },
+  "script_sha256": "2c3fae2b986d5bae6acf8cbc1f2cf73f72960bfb46f575e0b6e0022ced3dff70",
+  "model_selection": "0.5 * original-v3 validation mean BCE + 0.5 * PhiUSIIL-development validation mean BCE; excludes L2 penalties",
+  "training": "all 51,664 rows equally weighted; Adam 0.001; batch 256; maximum 50 epochs; patience 12; ReduceLR factor 0.5 patience 4 minimum 1e-5",
+  "phiusiil_role": "Previously examined corpus now development data; not independent test evidence",
+  "encoding": "audited empty-root slash normalization, scheme stripped, lowercase, first 200 characters, ASCII 1..95/unknown96/right-padding0",
+  "reserved_holdout_sha256": "b8a069c5d9671e74ad4c0f0b29ef1b3a40bd7c0c58c02d6884ae4e32bceeded8",
+  "reserved_holdout_scored": false,
+  "internal_test_scored": false,
+  "training_seconds": 7326.225612799986,
+  "epochs_run": 26,
+  "best_epoch": 14,
+  "model_sha256": "70f39d3a5e75c19047f07126b50b230822086b48a9c2cf75420007d523ff5478",
+  "validation": {
+    "validation_v3": {
+      "threshold": 0.5,
+      "accuracy": 0.8891497130933751,
+      "precision": 0.8700776855076346,
+      "recall": 0.8989759202878495,
+      "f1": 0.8842907704873401,
+      "auc_roc": 0.9564664932735365,
+      "average_precision": 0.9591649748606622,
+      "false_positive_rate": 0.11960542540073983,
+      "tn": 3570,
+      "fp": 485,
+      "fn": 365,
+      "tp": 3248,
+      "binary_crossentropy": 0.2905123743028576
+    },
+    "validation_phiusiil": {
+      "threshold": 0.5,
+      "accuracy": 0.84225,
+      "precision": 0.957247828991316,
+      "recall": 0.7165,
+      "f1": 0.8195596225336003,
+      "auc_roc": 0.8973794999999999,
+      "average_precision": 0.9239699563353416,
+      "false_positive_rate": 0.032,
+      "tn": 1936,
+      "fp": 64,
+      "fn": 567,
+      "tp": 1433,
+      "binary_crossentropy": 0.3723577306926816
+    }
+  },
+  "original_seed42_model_validation_v3": {
+    "threshold": 0.5,
+    "accuracy": 0.9191444966092853,
+    "precision": 0.9369343065693431,
+    "recall": 0.8881815665651813,
+    "f1": 0.9119067917021881,
+    "auc_roc": 0.9696672824500372,
+    "average_precision": 0.9718439499780278,
+    "false_positive_rate": 0.0532675709001233,
+    "tn": 3839,
+    "fp": 216,
+    "fn": 404,
+    "tp": 3209,
+    "binary_crossentropy": 0.2273469200198391
+  },
+  "validation_v3_differences_from_original_seed42": {
+    "accuracy": -0.02999478351591023,
+    "precision": -0.06685662106170842,
+    "recall": 0.010794353722668126,
+    "f1": -0.027616021214848074,
+    "auc_roc": -0.013200789176500694,
+    "average_precision": -0.012678975117365598,
+    "false_positive_rate": 0.06633785450061652
+  },
+  "limitations": [
+    "This report describes one seed; summarize all five runs separately.",
+    "PhiUSIIL-development validation is already examined development data.",
+    "Inherited corpus labels and source-format shortcuts remain limitations.",
+    "No internal-test or reserved-holdout predictions were made."
+  ]
+}

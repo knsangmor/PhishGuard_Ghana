@@ -1,0 +1,58 @@
+{
+  "status": "PREPARED_NO_TRAINING",
+  "experiment": "coverage_development_v1",
+  "phiusiil_role_change": "Previously examined external/diagnostic corpus is now development data. It is not independent test evidence for revised models.",
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "original_source_sha256": "d83ce942075dd63ed4d11560cfdcd9d512caa3d680e292f22cab484e8f074d01",
+  "phiusiil_sha256": "a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6",
+  "reserved_holdout_sha256": "b8a069c5d9671e74ad4c0f0b29ef1b3a40bd7c0c58c02d6884ae4e32bceeded8",
+  "tldextract_version": "5.3.1",
+  "original_training_rows": 35664,
+  "added_training_rows": 16000,
+  "combined_training_rows": 51664,
+  "added_training_class_counts": {
+    "1": 8000,
+    "0": 8000
+  },
+  "original_validation_rows": 7668,
+  "phi_development_validation_rows": 4000,
+  "phi_validation_class_counts": {
+    "0": 2000,
+    "1": 2000
+  },
+  "eligible_phi_candidates": 224256,
+  "exclusive_exclusions": {
+    "domain_overlap_any_v3_partition": 8900,
+    "conflicting_phiusiil_encoded_labels": 86,
+    "repeated_encoded_input": 2553
+  },
+  "sampling": {
+    "salt": "coverage-development-v1-seed42",
+    "domain_hash_validation_fraction": 0.2,
+    "maximum_rows_per_domain_per_class": 5,
+    "training_rows_per_class": 8000,
+    "validation_rows_per_class": 2000,
+    "prediction_scores_used": false
+  },
+  "planned_model": "same root-normalized architecture and optimizer; one seed-42 pilot before scaling",
+  "planned_early_stopping": "equal-source-weighted validation binary crossentropy; maximum 50 epochs; patience 12",
+  "selection_policy": "report original-v3 and PhiUSIIL-development validation separately; no model selection or threshold tuning on reserved holdout",
+  "evaluation_policy_revision": "The earlier PhiUSIIL diagnostic-only development role is superseded for this explicitly documented mixed-corpus experiment; the reserved final comparison is unchanged.",
+  "reserved_holdout_scored": false,
+  "limitations": [
+    "Full PhiUSIIL has already been examined; its development validation is not independent confirmation.",
+    "Corpus labels are inherited, not live verified.",
+    "Source-specific formatting may still create shortcuts.",
+    "Broader coverage does not guarantee improvement or deployment readiness."
+  ],
+  "output_sha256": {
+    "train.csv": "5768ed99d8f785dcaa376284952720dcf74aef86642c7015d933d6fdb42b54bc",
+    "validation_v3.csv": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "validation_phiusiil_development.csv": "a328627ca4707b4f2edda9750a53b901a0409b742224cd2584d174c8599ce680",
+    "excluded_phiusiil.csv": "76bea42af818fe2a1ea40a998460f2101a743e50045d162f28d06fe4ba39bc85"
+  }
+}

@@ -1,3 +1,20 @@
 ﻿__pycache__/
 *.pyc
 .venv/
+
+# Local environments and editor files
+.venv*/
+venv/
+.idea/
+__pycache__/
+*.pyc
+
+# Local credentials
+.env
+.env.*
+!.env.example
+
+# Backup archives
+*.zip
+release_candidate_*/
+public_review_candidate_*/

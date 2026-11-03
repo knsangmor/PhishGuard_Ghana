@@ -1,0 +1,44 @@
+{
+  "scope": "Curated reports and original audit scripts from the verified provenance evidence package. The full raw corpus, historical provider list and intermediate URL corpora are not redistributed in this support subset. The exact final v3 partitions are supplied separately in the candidate.",
+  "source_archive_name": "PhishGuard_Point1_Provenance_Evidence.zip",
+  "source_archive_sha256": "2eec590da43a5ff339b28b342016bded7a781794e4d2e0259367f7175d20f3e8",
+  "files": [
+    {
+      "path": "provenance/augmentation_replay_report.json",
+      "sha256": "8a91af6b663afabfc1038b395ce1ffdac98aec6563b492ccb78e43f1853914ec"
+    },
+    {
+      "path": "provenance/reconciliation_report.json",
+      "sha256": "6dacafd7ffc46fb2773a17692db226749484bd80d22315485dd3c99fb00a6be8"
+    },
+    {
+      "path": "provenance/reconcile.py",
+      "sha256": "8b75eb943f5e29f2e4b34976b4d61d11ef69ca84e1b61337725e69973a94694f"
+    },
+    {
+      "path": "provenance/replay_augmentation.py",
+      "sha256": "8ac0dbfb52d743e8403d2bef6c229ebb4c10905a41f5efb7cd4cabde0ce8b5fa"
+    },
+    {
+      "path": "provenance/verify_evidence.py",
+      "sha256": "41264341de1bb32ce0d6b33218d0c3cdcfb7564c79806baef0b6c88b091d3b6c"
+    },
+    {
+      "path": "provenance/original_generated_test_results/methods.txt",
+      "sha256": "1478a0662cbab6a4ef1d5f1efe88c67dccfed6d69c3a2823007674d9dfe8763a"
+    },
+    {
+      "path": "provenance/original_generated_test_results/partition_provenance_counts.csv",
+      "sha256": "c611438e5bc7ca162bb33050889a5cbd08b44930f3412eac7a9ebee5ad47f5f7"
+    },
+    {
+      "path": "provenance/original_generated_test_results/per_seed_subset_metrics.csv",
+      "sha256": "6f0ab157b97c21428e8ba0681431923bcef67bd6a0e35d20032df22fe5ed6ea4"
+    },
+    {
+      "path": "provenance/original_generated_test_results/subset_summary.csv",
+      "sha256": "e4230bc4f98b6200f9b3ed51ad8b38b6715608929c5a0b9efd57857677f4b0b4"
+    }
+  ],
+  "reproduction_note": "The archived provenance scripts retain the original full-evidence-package layout. Full source-replay execution requires that package and its fingerprinted inputs; this curated report subset alone does not execute that replay. Public redistribution terms must be checked per source."
+}

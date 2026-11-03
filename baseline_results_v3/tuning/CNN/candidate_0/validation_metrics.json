@@ -1,0 +1,7 @@
+{
+  "candidate": 0,
+  "config": {
+    "filters": 64
+  },
+  "validation_average_precision": 0.957177635386079
+}

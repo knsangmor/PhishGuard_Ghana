@@ -1,0 +1,109 @@
+{
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "prepared_files_sha256": {
+    "train.csv": "5768ed99d8f785dcaa376284952720dcf74aef86642c7015d933d6fdb42b54bc",
+    "validation_v3.csv": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "validation_phiusiil_development.csv": "a328627ca4707b4f2edda9750a53b901a0409b742224cd2584d174c8599ce680",
+    "excluded_phiusiil.csv": "76bea42af818fe2a1ea40a998460f2101a743e50045d162f28d06fe4ba39bc85"
+  },
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "reserved_holdout_sha256": "b8a069c5d9671e74ad4c0f0b29ef1b3a40bd7c0c58c02d6884ae4e32bceeded8",
+  "threshold_policy": "Per seed, one threshold for both validation sources; maximum of their thresholds meeting the empirical FPR cap. Use probability >= threshold.",
+  "operating_points": [
+    "default_0.5",
+    "fpr_cap_0.01",
+    "fpr_cap_0.005"
+  ],
+  "primary_operating_point": "fpr_cap_0.01",
+  "reserved_holdout_scored": false,
+  "internal_test_scored": false,
+  "evaluation_commitment": "Evaluate all five frozen broader-data models and all five original v3 models on the same reserved holdout; report all seeds, default 0.5, and validation-selected 1% and 0.5% FPR operating points. Do not select seeds or tune thresholds from holdout outcomes. Original models require thresholds frozen using these same development validation sources before holdout evaluation.",
+  "limitations": [
+    "Development validation has informed selection.",
+    "Empirical FPR caps do not guarantee future FPR.",
+    "Five-seed variability is conditional on fixed data; confidence intervals do not capture dataset or domain sampling uncertainty.",
+    "PhiUSIIL is development data, not independent confirmation."
+  ],
+  "runs": {
+    "42": {
+      "model_path": "coverage_pilot_v1/seed_42/model.keras",
+      "model_sha256": "f8c0c74802f5c54824996adb2c40f135cb4afbd3afd6c31a5d7e72b49cbb6ff9",
+      "metrics_sha256": "69ae33420de84baf335f119403476a42e1b046180208feb03bcae8b653a2db5a",
+      "prediction_sha256": {
+        "validation_v3": "9ffc7b125e3df6a29488e18a47328f84bd4470d87d5e73d944c14a8410567279",
+        "validation_phiusiil": "a1661db19ad6293d5345d7cb8369168a1bc85dd799856bfe6aca69b7f42fe50f"
+      },
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9788497000000002,
+        "fpr_cap_0.005": 0.9913388000000001
+      }
+    },
+    "43": {
+      "model_path": "coverage_pilot_v1/seed_43/model.keras",
+      "model_sha256": "4197c1f56c9aba5f3445232ae5b3d65d7ba799cbebd5b46c9ad5eea178c1d760",
+      "metrics_sha256": "9da176522b5e3a81a7adbbbe07b1e24ed2efa12e0bdaf011c26788d6c52bbc99",
+      "prediction_sha256": {
+        "validation_v3": "46b75a514cc15017a716e3251ddb4805a9e70d8a71141dd57b5dd3a00f4bca0c",
+        "validation_phiusiil": "790664b4b139064165f860b7efc7eb4fb92759094e19fdffa796d3d8eb2c3355"
+      },
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9779845500000001,
+        "fpr_cap_0.005": 0.9899736000000001
+      }
+    },
+    "44": {
+      "model_path": "coverage_pilot_v1/seed_44/model.keras",
+      "model_sha256": "462f62957a632ea5346d723adaacad425ee6bdd4e2894ce2c7acbf8813c019fb",
+      "metrics_sha256": "5373221fa8ae14f7c528a7afad781084b6971ddbd0152f66ae39eedf0825d903",
+      "prediction_sha256": {
+        "validation_v3": "367366ba5489bfb78c408c00c26b2daa0aaf0965ffce311934c71d7d7648cdbb",
+        "validation_phiusiil": "906a0654fa56dce7d03ae75fbf61592d3ac35a2d25d4df4616a9a49032aa56cc"
+      },
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9733850000000001,
+        "fpr_cap_0.005": 0.9860373000000001
+      }
+    },
+    "45": {
+      "model_path": "coverage_pilot_v1/seed_45/model.keras",
+      "model_sha256": "70f39d3a5e75c19047f07126b50b230822086b48a9c2cf75420007d523ff5478",
+      "metrics_sha256": "2a222f1a0f1f3b29056b37d4daa88c8e346ca8d3a427d1c271894b0dfda4a6ec",
+      "prediction_sha256": {
+        "validation_v3": "8a1fae263a6e1640ba927f82f7a8b3420207381ee272881c859a0ab19c8bdf2c",
+        "validation_phiusiil": "187703aecb4b8088759344cea05f255475ccb5ee3a91baa87eddccb98565c9c7"
+      },
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9793463000000001,
+        "fpr_cap_0.005": 0.9902954000000002
+      }
+    },
+    "46": {
+      "model_path": "coverage_pilot_v1/seed_46/model.keras",
+      "model_sha256": "3093f17a8f581f85fc5cc0aa8b38eaf0d5ac8a5abb6cf9b100b3e8379169ad38",
+      "metrics_sha256": "16f504b1dc107a219d4b27fb22bc2f1cf88871cb88e7d0b9fcb5df515830f8c7",
+      "prediction_sha256": {
+        "validation_v3": "ebb8d0e68a9f5315fe19dfa09cac84b05d4dcf6d284deb1c483645a6c4695fef",
+        "validation_phiusiil": "00b76aa94c3e1b7872cae4db759b979e720146106f72df836da5fa97f1a49fd5"
+      },
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9665984500000001,
+        "fpr_cap_0.005": 0.9832554500000001
+      }
+    }
+  }
+}

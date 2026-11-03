@@ -1,0 +1,92 @@
+{
+  "seed": 42,
+  "test_records": 7653,
+  "logging_sample_records": 5000,
+  "repeats": 5,
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "logical_cpus": 12,
+  "tensorflow": "2.16.2",
+  "keras": "3.13.2",
+  "visible_devices": [
+    "PhysicalDevice(name='/physical_device:CPU:0', device_type='CPU')"
+  ],
+  "oneDNN_env": "0",
+  "tensorflow_intra_threads": 0,
+  "tensorflow_inter_threads": 0,
+  "model_load_seconds_single_measurement": 0.5110284999827854,
+  "max_probability_difference_from_saved": 6.279459381364205e-07,
+  "threshold_0_5_prediction_agreement": 1.0,
+  "input_hashes": {
+    "model_hash_v3.py": "cc5ed206c7350cf9bf9339b78f8a5e0b626a69e202fbfb2ef80c3e38c398d7c8",
+    "phishguard_gh_model.keras": "cdc771274f9512c5bf24bead1742f5ee3cbc8fa3af182b2bd357ed5d6f0b88e4",
+    "predictions.csv": "ad62e1de2e660addc9dc1103795bfebeb92460900537fb7a5c8577b20573a5f5",
+    "test.csv": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "logging_orders": [
+    {
+      "repeat": 0,
+      "order": [
+        "hash_chain",
+        "plain"
+      ]
+    },
+    {
+      "repeat": 1,
+      "order": [
+        "plain",
+        "hash_chain"
+      ]
+    },
+    {
+      "repeat": 2,
+      "order": [
+        "plain",
+        "hash_chain"
+      ]
+    },
+    {
+      "repeat": 3,
+      "order": [
+        "plain",
+        "hash_chain"
+      ]
+    },
+    {
+      "repeat": 4,
+      "order": [
+        "hash_chain",
+        "plain"
+      ]
+    }
+  ],
+  "summary": {
+    "chain_verification": {
+      "mean_ms_per_record": 0.023924904000014065,
+      "sd_ms_per_record": 0.003752532722414108
+    },
+    "prediction_csv_write": {
+      "mean_ms_per_record": 0.005113780216783515,
+      "sd_ms_per_record": 0.0005738889188224035
+    },
+    "rationale_generation": {
+      "mean_ms_per_record": 0.01871758800232783,
+      "sd_ms_per_record": 0.000514757633105682
+    },
+    "test_url_encoding": {
+      "mean_ms_per_record": 0.027332983143879795,
+      "sd_ms_per_record": 0.0012967899297527542
+    },
+    "warm_cpu_model_predict_batch256": {
+      "mean_ms_per_record": 1.1049634078152475,
+      "sd_ms_per_record": 0.08052050679990347
+    },
+    "hashing_overhead": {
+      "mean_extra_ms_per_record": -0.032384595999028536,
+      "sd_extra_ms_per_record": 0.11327346676930343,
+      "mean_percent": -0.5741776660688735
+    }
+  },
+  "method": "Plain control subclasses the existing logger and replaces canonical serialization plus SHA256 with a fixed 64-character placeholder. All record construction, timestamps, memory retention, JSONL/CSV append patterns and link-flag calculations are otherwise identical. Plain output offers no integrity guarantee. Initialization excluded. Order randomized within paired repeats; same fixed evenly spaced sample. Rationale generation excluded from logging and timed separately.",
+  "limitations": "Logging uses OS-cached writes with file close per record, no fsync or durable-disk guarantee. Warm batched predict includes Keras API overhead; ms/record is amortized throughput, not single-request latency. Load time is one cold API call without OS cache control. Negative overhead is retained as timing noise. Source hardware power, thermal state and competing processes can affect results. Sample benchmarks do not measure complete pipeline end-to-end latency."
+}

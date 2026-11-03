@@ -1,0 +1,14 @@
+{
+  "seed": 44,
+  "threshold": 0.5,
+  "model_sha256": "d4880614c735e13a3f62bbfa72ba7f4af757c20ac57f269741e215e0b8b21a12",
+  "scores_sha256": "be0b7f32ee7281933f14b0d3dba70d417bd12c726bb6e6b01536b2cd0b00ab5d",
+  "metrics": {
+    "accuracy": 0.8540441656866589,
+    "precision": 0.9369274136715997,
+    "recall": 0.7392271337225466,
+    "f1": 0.8264180264180264,
+    "auc_roc": 0.9145022232531055,
+    "average_precision": 0.9234608375117553
+  }
+}

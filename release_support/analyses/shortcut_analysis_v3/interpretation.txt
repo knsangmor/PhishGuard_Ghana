@@ -1,0 +1,5 @@
+Five saved main-model seeds, 42–46. All 7,653 original test predictions in every run agree in verdict with the saved results; probability differences below 1e-5. Details reproduce summary counts; transformations preserve all parsed components except the intended component. HTTP, HTTPS and schemeless variants have identical encodings for every test URL.
+
+www and root slash sensitivity is substantial across all five seeds. Flip rates describe changes in predicted verdict, not changes in measured accuracy or verified evasion. Perturbed URL resources and labels were not independently verified. Non-applicable URLs are excluded from each probe. Mean and SD describe seed variation on the same eligible URLs, not independent samples of deployment traffic.
+
+The encoding-level scheme fix is demonstrated, but no causal claim about generalization improvement or the augmentation's benefit follows. Before/after correction, separate training-fix ablations and validated adaptive attacks remain outstanding. Length subgroup associations do not establish causal effects. Keep the frozen dataset and model outputs; do not silently retrofit normalization to the evaluated models.

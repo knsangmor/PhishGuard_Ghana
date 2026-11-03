@@ -1,0 +1,42 @@
+{
+  "broader_protocol_sha256": "6c67b200ea5550b862b0a420046d7adceae73d2b5725ec8c71766f4d92489f78",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "threshold_policy": "Per seed, one threshold for both validation sources; maximum of their thresholds meeting the empirical FPR cap. Use probability >= threshold.",
+  "primary_operating_point": "fpr_cap_0.01",
+  "reserved_holdout_sha256": "b8a069c5d9671e74ad4c0f0b29ef1b3a40bd7c0c58c02d6884ae4e32bceeded8",
+  "reserved_holdout_scored": false,
+  "internal_test_scored": false,
+  "validation_files_sha256": {
+    "validation_v3.csv": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "validation_phiusiil_development.csv": "a328627ca4707b4f2edda9750a53b901a0409b742224cd2584d174c8599ce680"
+  },
+  "encoding": "Original v3: scheme stripped, lowercase, first 200 characters, right padding; no root normalization.",
+  "runs": {
+    "42": {
+      "model_path": "corrected_results_v3/seed_42/phishguard_gh_model.keras",
+      "model_sha256": "cdc771274f9512c5bf24bead1742f5ee3cbc8fa3af182b2bd357ed5d6f0b88e4"
+    },
+    "43": {
+      "model_path": "corrected_results_v3/seed_43/phishguard_gh_model.keras",
+      "model_sha256": "63dfaa62265219f1f9143ad620f995c21957a8f1637c02cf5d153e05b61adb87"
+    },
+    "44": {
+      "model_path": "corrected_results_v3/seed_44/phishguard_gh_model.keras",
+      "model_sha256": "4e57a3e10c35664e82f61a77903cca49cc4e330d1a5ac6ab05e54278f55bec00"
+    },
+    "45": {
+      "model_path": "corrected_results_v3/seed_45/phishguard_gh_model.keras",
+      "model_sha256": "269e0341943a542bc4da74ac5aae355f079475d602b2c9ab20b23bc73611edb1"
+    },
+    "46": {
+      "model_path": "corrected_results_v3/seed_46/phishguard_gh_model.keras",
+      "model_sha256": "135ddffcdd6ab771009aee21e934700fd40f8fe36d337b2d44622749865af1f5"
+    }
+  }
+}

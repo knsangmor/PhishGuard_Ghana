@@ -1,0 +1,110 @@
+{
+  "seed": 44,
+  "fixture_seed": 7042,
+  "fixture_cases": 400,
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "files": {
+    "CNN_LSTM": {
+      "relative_path": "corrected_results_v3/seed_44/phishguard_gh_model.keras",
+      "sha256": "4e57a3e10c35664e82f61a77903cca49cc4e330d1a5ac6ab05e54278f55bec00"
+    },
+    "RF_full": {
+      "relative_path": "baseline_results_v3/seed_44/RF_full/model.pkl",
+      "sha256": "a2bba758b09739f65dff553535d9947ec8f7fd23a4a4bcd650947bc59c6904c5"
+    },
+    "XGB_full": {
+      "relative_path": "baseline_results_v3/seed_44/XGB_full/model.pkl",
+      "sha256": "c7b745d7fd22883f81a0e5efb4de9088b78ab4508928d8ef97fa0ede46c31b31"
+    },
+    "corrected_feature_generator": {
+      "relative_path": "generate_corrected_features.py",
+      "sha256": "273819892812656ce8c7c070b3abb0d7be364c356c91d09a61063b236d5ae210"
+    },
+    "test_features": {
+      "relative_path": "dataset_fix_outputs_v3/test_features.csv",
+      "sha256": "d0b16b86b45461ec809ffd73ec83c9f5d7943ffb56346242cfcf64de81e67406"
+    },
+    "baseline_protocol": {
+      "relative_path": "baseline_results_v3/protocol.json",
+      "sha256": "82c0b77b69baf96ce9887686ed678efe0aa059a8120f3f25a7bf548bda337fdb"
+    },
+    "CNN_LSTM_test_predictions": {
+      "relative_path": "corrected_results_v3/seed_44/test_predictions.csv",
+      "sha256": "bed30185837d3f6e3e4baf8c56119718721fa07caefe88f3747db582abf8a6ad"
+    },
+    "RF_full_test_predictions": {
+      "relative_path": "baseline_results_v3/seed_44/RF_full/test_predictions.csv",
+      "sha256": "63a61d07403523f1de1a16e1198be0f6d9c0d40803bb348f18f14e1d3e4091ee"
+    },
+    "RF_full_metrics": {
+      "relative_path": "baseline_results_v3/seed_44/RF_full/metrics.json",
+      "sha256": "d11bd9abef1b529e48bfd3e17d9f5ceefe49f90c5217751e28083a742e6759a6"
+    },
+    "XGB_full_test_predictions": {
+      "relative_path": "baseline_results_v3/seed_44/XGB_full/test_predictions.csv",
+      "sha256": "7b10d4a7fc3703e917f29b8dd78c9004d3b1f0851e78bf6b290b11363643b1d8"
+    },
+    "XGB_full_metrics": {
+      "relative_path": "baseline_results_v3/seed_44/XGB_full/metrics.json",
+      "sha256": "eb3a8537e6216ff3c14fa755de8028504eab34879013bdabcfd45cbd84ed28e7"
+    }
+  },
+  "script_sha256": "0201f2e44cdcae5a4cd004a4291ea22c259ff6c4fe94b1dc13ba6832d6795cde",
+  "rounds": [
+    [
+      "brand_query",
+      "pct_1",
+      "path_32",
+      "fragment"
+    ],
+    [
+      "path_256",
+      "path_512",
+      "unicode_query",
+      "long_query"
+    ],
+    [
+      "pct_2",
+      "path_96",
+      "brand_query",
+      "unicode_query"
+    ],
+    [
+      "path_512",
+      "pct_4",
+      "long_query",
+      "fragment"
+    ]
+  ],
+  "maximum_new_score_queries_per_case": 16,
+  "original_query_charged_separately": true,
+  "threshold": 0.5,
+  "selection": "Four adaptive rounds; minimize score on simulated positives, maximize on simulated benign false-alarm controls; retain original if no improvement.",
+  "input_deduplication": "Per case and model, skip already queried encodings or numeric feature vectors.",
+  "functionality_validation": "HTTP 200, exact content type and per-case response-body SHA256 using loopback connection and logical Host header; no redirects or scripts.",
+  "fixture_application_policy": "Known tenant and opaque case ID, fixed decoded leaf, arbitrary directory aliases; ignores campaign/theme and fragments.",
+  "limitations": [
+    "Constructed .test fixtures and simulated positive/negative behaviours; not verified real phishing pages or natural traffic.",
+    "Byte-identical local HTTP responses validate only this explicitly alias-aware, script-free fixture application.",
+    "Logical hosts are simulated tenants; this does not demonstrate abuse of an actual legitimate provider.",
+    "No live URL or credential-collection functionality is accessed; there is no demonstrated preservation of a real malicious payload.",
+    "A four-round best-so-far score-guided search is evaluated under a maximum 16 new queries per case per model; not a complete adaptive-attacker evaluation.",
+    "All labels and transformations are fixed before inference. Results must remain separate from corpus test metrics and external validation.",
+    "No deployment, local Ghanaian effectiveness, human-user behaviour or universal robustness claim is supported."
+  ],
+  "training_performed": false,
+  "external_test": false,
+  "protocol_written_before_inference": true,
+  "scorer_revision": 2,
+  "feature_extractor": {
+    "generator_sha256": "273819892812656ce8c7c070b3abb0d7be364c356c91d09a61063b236d5ae210",
+    "tldextract_version": "5.3.1",
+    "suffix_list_urls": [],
+    "include_psl_private_domains": true,
+    "numeric_dtype": "float32"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "seed": 42,
+  "original_chain_records": 50985,
+  "tested_prefix_records": 5000,
+  "attack_scenarios_including_control": 46,
+  "all_scenario_expectations_met": true,
+  "original_chain_sha256": "2c33966d2aca848697de190d5722f4c64bef2f7cace449e1abd701beec40051e",
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "script_sha256": "3a7bba9e9fca774f33fd0f7b71d347aed4aac61616ecf39fd9ef89d7431c1539",
+  "algorithms": [
+    "SHA-256 chain",
+    "HMAC-SHA-256 chain"
+  ],
+  "canonicalization": "sorted-key ensure_ascii JSON, default separators, UTF-8; exclude record_hash",
+  "key_bytes": 32,
+  "key_storage": "ephemeral memory only, not persisted; fresh per experiment",
+  "checkpoint_reference_model": "expected log_id, final count and tip held outside attacker mutations in verifier memory",
+  "checkpoints": {
+    "sha256": {
+      "log_id": "018e489a0fca3546057b30d4f66d0eeb",
+      "count": 5000,
+      "final_hash": "bc4fe948514274535c0ae9e2cc3dad4161612a5bdcf167944fd1d8d58e18ea7d"
+    },
+    "hmac_sha256": {
+      "log_id": "018e489a0fca3546057b30d4f66d0eeb",
+      "count": 5000,
+      "final_hash": "d084c42cd93a89a39a656773a252c15c55608f190a018260b7df1ad9654eb63a"
+    }
+  },
+  "external_anchor_deployed": false,
+  "training_performed": false,
+  "inference_performed": false,
+  "runtime": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel"
+  },
+  "references": [
+    "https://www.rfc-editor.org/rfc/rfc2104",
+    "https://docs.python.org/3/library/hmac.html",
+    "https://www.rfc-editor.org/rfc/rfc5848"
+  ],
+  "limitations": [
+    "HMAC is a standard authentication mechanism, not a new cryptographic contribution.",
+    "A log-write attacker is assumed unable to read the HMAC key unless the scenario explicitly grants key compromise.",
+    "Same-process memory is not demonstrated isolation from a compromised host; OS, hardware and remote key protection are not evaluated.",
+    "Any holder of the shared key can forge records; no non-repudiation or forward security is established.",
+    "A valid prefix, including empty input, passes internal-only SHA and HMAC checks; known count/tip freshness is required to detect rollback.",
+    "The checkpoint is a simulated protected reference, not an externally anchored or independently timestamped service.",
+    "A compromised key permits full HMAC reconstruction; replacing the reference as well defeats all simulated checks.",
+    "New keyed records authenticate a retrospective copy of prior records, not their historical origin or acquisition time.",
+    "Timing is in-memory construction and verification only, not disk logging, network anchoring or end-to-end detector latency.",
+    "Attack counts are deterministic scenario outcomes, not population detection rates or a security proof.",
+    "No classifier truth, legal admissibility, key lifecycle or authenticated operator identity was evaluated."
+  ]
+}

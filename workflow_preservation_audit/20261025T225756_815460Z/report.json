@@ -1,0 +1,102 @@
+{
+  "complete": true,
+  "all_workflows_passed": true,
+  "unique_case_url_workflows": 18853,
+  "failed_workflows": 0,
+  "new_detector_inference": false,
+  "training_performed": false,
+  "counts": {
+    "loopback_http_requests": 37706,
+    "successful_dummy_submissions": 18853
+  },
+  "protocol": {
+    "operation": "Retrospective replay of previously scored URLs on a new working dummy application.",
+    "new_detector_inference": false,
+    "training_performed": false,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "fixture_seed": 7042,
+    "script_sha256": "e6e6075643b1f79ba7a251f82435ab5e237a3eb3bc0057b1cdf8edab8dbeaedb",
+    "oracle": "GET exact page + parsed form + fixed-code POST + exact completion response.",
+    "token_policy": "Fresh per-run in-memory form tokens; constant for each case within the replay; not part of model inputs.",
+    "limitations": [
+      "Fictional pages and simulated labels; not real phishing or natural traffic.",
+      "GET and dummy POST preservation cover only the declared local application.",
+      "Directory aliases and ignored query/fragment fields are intentional application policies.",
+      "No real authentication, credential capture, payment, delivery campaign or legitimate-provider compromise is tested.",
+      "Follow-up designed after examining the earlier controlled-fixture outcomes; exploratory evidence.",
+      "Different model representations and unique-query counts prevent architecture-only claims.",
+      "Repeated fits on fixed cases do not measure uncertainty over real attacks.",
+      "New workflow checks do not make the earlier pages retrospectively functional.",
+      "Existing model scores are reused because the detector inputs are URL strings only; no new detector evaluation was performed."
+    ]
+  },
+  "source_runs": [
+    {
+      "seed": 42,
+      "run": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\controlled_robustness_v1\\seed_42_20261023T233042_380943Z",
+      "sha256": {
+        "protocol.json": "22216723b4505d130bc57067e3e74b4d09789612be9fbb20b2c8906507009892",
+        "report.json": "ee3a4dfe1a102a1cf163ab5136293907b1bfdafa6aa10c6007c129274b9b64ba",
+        "per_case_results.csv": "eed963366e1a2699126292fc3c9c5ed3da0f60a9511f93124708aea72556e475",
+        "candidate_trace.csv": "5a5ec263e7ba92124dc679c13d4564268b16c9ff8e0a65814b137e3b276533b2",
+        "saved_prediction_verification.json": "2a371d2e56e5579dfc459b8bed4a784b41edba4d88fcf2a3748dd164f66e221f"
+      }
+    },
+    {
+      "seed": 43,
+      "run": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\controlled_robustness_v1\\seed_43_20261024T052806_376615Z",
+      "sha256": {
+        "protocol.json": "cffa5a4120f37490291dd7a3ce6dcbeae5e4d565f99e76136e5d3694061680a9",
+        "report.json": "0620ccaba2172a449570e113562f710d4753edb9f8a7211d9d5025c699bcb2b4",
+        "per_case_results.csv": "e52261f767d6c0e917e62914cb80a85b77ce10c8a41428f451367dd369e677b8",
+        "candidate_trace.csv": "86d9989773c5b13736c7d1922adf807c06d0d44a83b6ae40c70fb1505919d4ba",
+        "saved_prediction_verification.json": "6abbecdcef10192a6b2679135d3c8b6ea888b61b5ce5e976abf5d67eb1e1f685"
+      }
+    },
+    {
+      "seed": 44,
+      "run": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\controlled_robustness_v1\\seed_44_20261024T053325_337084Z",
+      "sha256": {
+        "protocol.json": "547e01040484df5c486634dd6f3df608522719fd332ce3142c47fdf66875ef03",
+        "report.json": "651a2cbdd1fea22b4418913d57ca71df2e3b76b55f86cc921384023da835b214",
+        "per_case_results.csv": "e796a1ae1555fb6721b0a7c8375b97529c2c2d75edd21caa524b9b7711e4b258",
+        "candidate_trace.csv": "63012f1e068469db9fea5e239e74789ca74f6ab27c4baa21f072b1c1f5821b2d",
+        "saved_prediction_verification.json": "e8f12601990b4d5df8e2b7c5654d44e6157d6fbda18393f057995a751e15c1dd"
+      }
+    },
+    {
+      "seed": 45,
+      "run": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\controlled_robustness_v1\\seed_45_20261024T053710_020718Z",
+      "sha256": {
+        "protocol.json": "fad60a1cbd121aaf8892c69e1b06914aa7f24b85d6f56ad9d9ec6fead25071cf",
+        "report.json": "bd92e72b80c64be9b0bd2fe38844f8d18d96724b01c6b701d509a8d524c85331",
+        "per_case_results.csv": "d957fca7cc63e32a8196ef846f7080668f0561e3a38dd5da0c7a08d664cebba4",
+        "candidate_trace.csv": "fc1196b3fb4aaf27bdc92c256e6759fd5708880bcaa33889a6a9b4a460463519",
+        "saved_prediction_verification.json": "00e73bf2a3c665515111935101dd9a29226df5c31310be09a29ef79918e2b1c4"
+      }
+    },
+    {
+      "seed": 46,
+      "run": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\controlled_robustness_v1\\seed_46_20261024T054116_941408Z",
+      "sha256": {
+        "protocol.json": "d19e3e907f373408e7e8c103f3839f6769497ad8785e8e0ecd271bcdde5a69ee",
+        "report.json": "f51b647da99a946a4050dd5f5a42b905853147884cfcbaf6d5f19c15dc30887d",
+        "per_case_results.csv": "53a390ef8aadd4ca91e2e18969e8931ca2c661d47bbbc757d896b5ed167f85a5",
+        "candidate_trace.csv": "db98e48fd3a38b74d1518f92574c06d8c2ce0fe1a3edde87bab80604716fd723",
+        "saved_prediction_verification.json": "965bc31cea0836cb301822157c661bdfebecdbc910278f7c94cb9b0922cc8137"
+      }
+    }
+  ],
+  "excluded_repeat_runs": [
+    "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\controlled_robustness_v1\\seed_42_20261023T232056_563171Z"
+  ],
+  "incomplete_runs_ignored": [
+    "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\controlled_robustness_v1\\seed_42_20261023T223401_112643Z"
+  ]
+}

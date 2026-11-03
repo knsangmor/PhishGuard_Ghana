@@ -1,0 +1,30 @@
+Version 3 evaluation: five fixed-partition training seeds
+
+Validation: 7,668 URLs. Test: 7,653 URLs (4,056 benign, 3,597 malicious).
+All five runs share partition fingerprints and URL/label order. Saved metrics agree with recomputation from CSV probabilities to rounding tolerance.
+
+Mean, sample SD and 95% Student-t intervals for the mean across five seeds:
+           metric     mean  sample_sd  ci95_low  ci95_high
+         accuracy 0.880099   0.003485  0.875772   0.884426
+        precision 0.910379   0.011475  0.896130   0.924627
+           recall 0.826466   0.011039  0.812760   0.840173
+         f1_score 0.866293   0.003969  0.861364   0.871222
+          auc_roc 0.946422   0.002012  0.943924   0.948921
+average_precision 0.949294   0.002701  0.945941   0.952648
+
+Intervals quantify training-seed uncertainty conditional on these fixed partitions. They do not capture uncertainty over datasets, domain sampling or deployment traffic; five seeds give limited precision.
+
+Operating-point protocol: baseline threshold 0.5 plus validation FPR caps 0.1%, 0.5% and 1%. For each cap, select the ROC threshold with maximum validation recall among feasible thresholds (ties favor the first/higher threshold). Freeze it and evaluate on test data. No threshold is selected from test scores. Test FPR need not meet its validation cap. Validation contains 4,055 benign URLs, limiting low-FPR resolution.
+
+Precision projections at 0.1% and 1% malicious prevalence are hypothetical prior-shift scenarios, not measured Ghana traffic rates. They assume test TPR/FPR transfer to deployment. The positive label includes phishing, malware and defacement; these are malicious-prevalence projections, not phishing-only estimates. PR curves and average precision reflect the observed test prevalence (~47%).
+
+Operating-point summaries (arithmetic mean and sample SD across seeds):
+                         validation_fpr           test_fpr           test_recall           test_precision           precision_at_prevalence_0.001           precision_at_prevalence_0.01          
+                                   mean      std      mean       std        mean       std           mean       std                          mean       std                         mean       std
+policy                                                                                                                                                                                            
+default_0.5                    0.070974  0.01602  0.072337  0.010784    0.826466  0.011039       0.910379  0.011475                      0.011513  0.001760                     0.105003  0.014387
+validation_FPR_cap_0.001       0.000986  0.00000  0.001824  0.001368    0.373033  0.077893       0.994994  0.002984                      0.243978  0.173235                     0.713343  0.138120
+validation_FPR_cap_0.005       0.004932  0.00000  0.005375  0.001094    0.512927  0.070441       0.988357  0.001597                      0.088492  0.010603                     0.493427  0.033609
+validation_FPR_cap_0.01        0.009864  0.00000  0.010552  0.001848    0.613344  0.063488       0.980963  0.002746                      0.055880  0.008413                     0.372454  0.036287
+
+Remaining reviewer work includes baseline validation tuning and scheme-feature ablation, paired comparisons, shortcut/augmentation ablations, sensitivity and adaptive-input tests, independent external evaluation, CPU/logging overhead benchmarks, and manuscript updates. These files do not close all reviewer points.

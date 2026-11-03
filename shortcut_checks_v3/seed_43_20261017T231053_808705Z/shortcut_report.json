@@ -1,0 +1,25 @@
+{
+  "seed": 43,
+  "test_records": 7653,
+  "threshold": 0.5,
+  "scheme_encoding_checks": {
+    "schemeless": {
+      "urls": 7653,
+      "encoding_mismatches": 0
+    },
+    "http": {
+      "urls": 7653,
+      "encoding_mismatches": 0
+    },
+    "https": {
+      "urls": 7653,
+      "encoding_mismatches": 0
+    }
+  },
+  "max_original_probability_difference_from_saved": 4.4094924922521983e-07,
+  "original_verdict_agreement_with_saved": 1.0,
+  "test_sha256": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f",
+  "model_sha256": "63dfaa62265219f1f9143ad620f995c21957a8f1637c02cf5d153e05b61adb87",
+  "interpretation": "Identical encoded inputs establish scheme invariance for this deterministic encoder/model in inference mode. They do not demonstrate improved generalization or the benefit of augmentation. www and slash changes can change the resource; appended paths are synthetic. Their original labels are retained only to stratify probes, not assigned as ground truth to transformed URLs. Do not call these flip rates attack success rates or transformed accuracy.",
+  "remaining": "Before/after fix comparison and individual training-fix ablations remain untested. Length-group comparisons are descriptive and confounded by URL source/class/domain. These probes do not constitute validated adaptive-attack evaluation."
+}

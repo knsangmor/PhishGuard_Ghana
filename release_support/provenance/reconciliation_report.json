@@ -1,0 +1,97 @@
+{
+  "checks": {
+    "original_source_rows": 651191,
+    "source_categories": {
+      "phishing": 94111,
+      "benign": 428103,
+      "defacement": 96457,
+      "malware": 32520
+    },
+    "base_sampling_membership_replayed": true,
+    "cleaning_replayed": {
+      "conflicting_keys": 20,
+      "conflicting_rows": 40,
+      "duplicates": 586,
+      "cleaned_rows": 51618,
+      "all_three_outputs_byte_identical": true
+    },
+    "initial_partition_row_accounting_exact": true,
+    "invalid_hostname_rows": 1,
+    "source_wide_quarantine_replayed": {
+      "train": 480,
+      "validation": 68,
+      "test": 83
+    },
+    "source_wide_quarantined_total": 631,
+    "v2_outputs_byte_identical": true,
+    "v3_overlap_removal_replayed": 1,
+    "v3_outputs_byte_identical": true,
+    "final_source_and_label_checks_passed": true,
+    "partition_provenance": [
+      {
+        "partition": "train",
+        "rows": 35664,
+        "generated_benign": 1636,
+        "source_rows": 34028,
+        "sha256": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f"
+      },
+      {
+        "partition": "validation",
+        "rows": 7668,
+        "generated_benign": 329,
+        "source_rows": 7339,
+        "sha256": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e"
+      },
+      {
+        "partition": "test",
+        "rows": 7653,
+        "generated_benign": 279,
+        "source_rows": 7374,
+        "sha256": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+      }
+    ],
+    "counterfactual_rows": 4000,
+    "counterfactual_exact_rows_retained": 0,
+    "counterfactual_new_canonical_keys": 0,
+    "tranco_pointer_sha256": "6b285738affb5a343c8490ecf15898e2e1694c8f337cfba51a73b13f02a8caec",
+    "tranco_target_sha256": "3a2f5b2a5eec2049cdf5de297507a6611789c2d0da12d2da6cfbbf461f8a76d8",
+    "tranco_target_size": 22715486,
+    "tranco_hash_issue": "The previously reported 6b... hash identifies the pointer text; 3a... identifies its data target, not a conflicting downloaded list.",
+    "source_binary_counts": {
+      "benign": 428103,
+      "malicious": 223088
+    },
+    "base_sampling_byte_identity_to_project_dataset_pointer_target": false,
+    "project_dataset_lfs_target": {
+      "sha256": "79c4ace036c6f0cf64fd0447a1a8b24bd95f136b4bfb502f1c38a6f8462f1736",
+      "bytes": 3287863,
+      "rows": 51638,
+      "benign": 27232,
+      "malicious": 24406,
+      "role": "Legacy deduplicated project dataset; not the 50,000-row base sample."
+    },
+    "tranco_target_recovered_and_verified": true
+  },
+  "limitations": [
+    "Historical Tranco daily-list ID and original generation stdout unavailable; exact list bytes, code, parameters and matching saved membership are now retained.",
+    "Initial domain fold assignment is preserved and exactly accounted for, not regenerated in this audit.",
+    "Inherited source labels and assumed-benign generated labels are not live verified.",
+    "Matching replay supports reproducibility but does not authenticate historical execution or original output row ordering."
+  ],
+  "audit_environment": {
+    "python": "3.12.14",
+    "pandas": "2.2.3"
+  },
+  "recovered_objects": [
+    {
+      "url": "https://media.githubusercontent.com/media/knsangmor/PhishGuard_Ghana/main/top-1m.csv",
+      "sha256": "3a2f5b2a5eec2049cdf5de297507a6611789c2d0da12d2da6cfbbf461f8a76d8",
+      "bytes": 22715486
+    },
+    {
+      "url": "https://media.githubusercontent.com/media/knsangmor/PhishGuard_Ghana/main/phishguard_gh_dataset.csv",
+      "sha256": "79c4ace036c6f0cf64fd0447a1a8b24bd95f136b4bfb502f1c38a6f8462f1736",
+      "bytes": 3287863
+    }
+  ]
+}

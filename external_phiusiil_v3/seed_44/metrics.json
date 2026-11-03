@@ -1,0 +1,71 @@
+{
+  "seed": 44,
+  "external_rows": 224879,
+  "external_test_sha256": "c3f6b91e1d20b96aee4bd860c769525683d0adee736e00a2b40e8e33e5744a88",
+  "model_sha256": "4e57a3e10c35664e82f61a77903cca49cc4e330d1a5ac6ab05e54278f55bec00",
+  "auc_roc": 0.43853397203817746,
+  "average_precision": 0.48523103565586057,
+  "operating_points": {
+    "default_0.5": {
+      "threshold": 0.5,
+      "threshold_is_positive_infinity": false,
+      "accuracy": 0.4115279772677751,
+      "precision": 0.35882284703391676,
+      "recall": 0.5299332912164983,
+      "f1": 0.427906293095622,
+      "false_positive_rate": 0.6725708809929424,
+      "tn": 43053,
+      "fp": 88435,
+      "fn": 43900,
+      "tp": 49491
+    },
+    "validation_fpr_cap_0.001": {
+      "threshold": 0.9973147,
+      "threshold_is_positive_infinity": false,
+      "accuracy": 0.5953601714699905,
+      "precision": 0.9966832504145937,
+      "recall": 0.025741238449101093,
+      "f1": 0.05018631984384623,
+      "false_positive_rate": 6.0842054027743974e-05,
+      "tn": 131480,
+      "fp": 8,
+      "fn": 90987,
+      "tp": 2404
+    },
+    "validation_fpr_cap_0.005": {
+      "threshold": 0.98842233,
+      "threshold_is_positive_infinity": false,
+      "accuracy": 0.610657286807572,
+      "precision": 0.9370880766926303,
+      "recall": 0.06698718291912496,
+      "f1": 0.12503622572876172,
+      "false_positive_rate": 0.0031942078364565587,
+      "tn": 131068,
+      "fp": 420,
+      "fn": 87135,
+      "tp": 6256
+    },
+    "validation_fpr_cap_0.01": {
+      "threshold": 0.9585083,
+      "threshold_is_positive_infinity": false,
+      "accuracy": 0.6223880397902872,
+      "precision": 0.7581962218159659,
+      "recall": 0.13322482894497328,
+      "f1": 0.2266281727853116,
+      "false_positive_rate": 0.030177658797761013,
+      "tn": 127520,
+      "fp": 3968,
+      "fn": 80949,
+      "tp": 12442
+    }
+  },
+  "threshold_selection": "original validation set only; no external tuning",
+  "citation": "Prasad, A., & Chandra, S. (2023). PhiUSIIL: A diverse security profile empowered phishing URL detection framework based on similarity index and incremental learning. Computers & Security, 103545. https://doi.org/10.1016/j.cose.2023.103545",
+  "limitations": [
+    "A separate published corpus does not prove independent upstream collection.",
+    "Overlap removal is against all frozen v3 partitions, not the entire unused original corpus.",
+    "No per-URL collection timestamps supplied: no temporal generalization claim.",
+    "External positives are phishing; training positives include malware and defacement.",
+    "Domain-disjoint filtering changes the external class and domain distribution."
+  ]
+}
