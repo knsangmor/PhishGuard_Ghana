@@ -1,0 +1,36 @@
+Five-seed tuned baseline comparison, version 3
+
+Verified all 40 baseline model results against saved CSV probabilities; validated URL/label ordering and partition fingerprints against main-model runs. Test set: 7,653 URLs. Positive class combines phishing, malware and defacement. Threshold 0.5.
+
+Selection: modest predefined candidate grids, validation average precision, tuning seed 42; early stopping uses validation loss. Selected settings frozen across seeds. These are limited searches, not exhaustive optimization. Main-model architecture was fixed and was not tuned by this baseline search.
+
+Mean +/- sample SD and Student-t intervals use five training seeds conditional on the fixed split and chosen configurations. Reusing the selected tuning model for seed 42 is disclosed; selection variability is not included. XGBoost uses full row/column sampling, and all five saved predictions for each variant are identical: zero seed SD does not mean zero generalization uncertainty.
+
+Paired inference: baseline-minus-main accuracy averaged over seeds for each URL, then summed within PSL registrable-domain groups. Domain sign-flip test uses 20,000 random sign assignments, swapping the sign of the entire domain difference vector, and Holm correction across eight baseline-versus-main comparisons. This is conditional on trained models and assumes independent, exchangeable/symmetric domain-level differences under the null. 3,000 paired domain-bootstrap replicates resample complete domains, retain all URLs and the same five fitted seeds, and compute percentile intervals for mean-seed accuracy differences. These do not include retraining or tuning uncertainty. Do not pool seeds as independent test URLs. PSL snapshot/version may differ from original Windows environment; report the reconstructed domain count.
+
+Exact McNemar per seed is supplied descriptively, but URL independence may fail within domains; domain-aware comparisons are the primary analysis. P-values are not probabilities that a model is better. No significance conclusion for F1 or AUC is made from accuracy tests.
+
+Ablations are separately retuned on validation, so differences compare feature-availability pipelines, not a single fixed configuration's isolated feature effect. no_scheme drops is_https only: lexical URL lengths/slashes can still encode scheme information. no_scheme_no_ghana also removes is_trusted_gh_tld, brand_injected and brand_on_free_tld; it does not remove all possible geographic cues. Neural and numeric inputs remain different; same partitions alone do not make representations identical.
+
+Results:
+                 model           accuracy           f1_score           auc_roc
+               RF_full 88.5483 +/- 0.1056 87.8649 +/- 0.1062 0.9583 +/- 0.0003
+          RF_no_scheme 87.9446 +/- 0.1048 87.1701 +/- 0.1101 0.9528 +/- 0.0002
+ RF_no_scheme_no_ghana 87.8976 +/- 0.0953 87.0891 +/- 0.0988 0.9529 +/- 0.0004
+              XGB_full 90.1738 +/- 0.0000 89.6590 +/- 0.0000 0.9635 +/- 0.0000
+         XGB_no_scheme 89.0892 +/- 0.0000 88.4716 +/- 0.0000 0.9588 +/- 0.0000
+XGB_no_scheme_no_ghana 89.2591 +/- 0.0000 88.6683 +/- 0.0000 0.9589 +/- 0.0000
+                   CNN 87.7538 +/- 0.2371 86.4702 +/- 0.2357 0.9451 +/- 0.0016
+                BiLSTM 87.1893 +/- 0.4285 85.8398 +/- 0.5208 0.9360 +/- 0.0033
+         PhishGuard_GH 88.0099 +/- 0.3485 86.6293 +/- 0.3969 0.9464 +/- 0.0020
+
+Paired domain comparisons:
+                 model  baseline_minus_main_accuracy  domain_bootstrap_ci95_low  domain_bootstrap_ci95_high  domain_signflip_p  holm_adjusted_p  test_domains
+               RF_full                      0.005384                  -0.018410                    0.028815           0.666267         1.000000          3315
+          RF_no_scheme                     -0.000653                  -0.022832                    0.021691           0.957202         1.000000          3315
+ RF_no_scheme_no_ghana                     -0.001124                  -0.021565                    0.019807           0.927404         1.000000          3315
+              XGB_full                      0.021639                  -0.004364                    0.052053           0.117544         0.822809          3315
+         XGB_no_scheme                      0.010793                  -0.012078                    0.035629           0.378881         1.000000          3315
+XGB_no_scheme_no_ghana                      0.012492                  -0.010389                    0.038445           0.320884         1.000000          3315
+                   CNN                     -0.002561                  -0.011005                    0.005314           0.552922         1.000000          3315
+                BiLSTM                     -0.008206                  -0.016663                   -0.000567           0.038748         0.309985          3315

@@ -1,0 +1,23 @@
+{
+  "seed": 43,
+  "training_rows": 51664,
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "prepared_files_sha256": {
+    "train.csv": "5768ed99d8f785dcaa376284952720dcf74aef86642c7015d933d6fdb42b54bc",
+    "validation_v3.csv": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "validation_phiusiil_development.csv": "a328627ca4707b4f2edda9750a53b901a0409b742224cd2584d174c8599ce680",
+    "excluded_phiusiil.csv": "76bea42af818fe2a1ea40a998460f2101a743e50045d162f28d06fe4ba39bc85"
+  },
+  "script_sha256": "2c3fae2b986d5bae6acf8cbc1f2cf73f72960bfb46f575e0b6e0022ced3dff70",
+  "model_selection": "0.5 * original-v3 validation mean BCE + 0.5 * PhiUSIIL-development validation mean BCE; excludes L2 penalties",
+  "training": "all 51,664 rows equally weighted; Adam 0.001; batch 256; maximum 50 epochs; patience 12; ReduceLR factor 0.5 patience 4 minimum 1e-5",
+  "phiusiil_role": "Previously examined corpus now development data; not independent test evidence",
+  "encoding": "audited empty-root slash normalization, scheme stripped, lowercase, first 200 characters, ASCII 1..95/unknown96/right-padding0",
+  "reserved_holdout_sha256": "b8a069c5d9671e74ad4c0f0b29ef1b3a40bd7c0c58c02d6884ae4e32bceeded8",
+  "reserved_holdout_scored": false,
+  "internal_test_scored": false
+}

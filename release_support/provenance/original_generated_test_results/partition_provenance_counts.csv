@@ -1,0 +1,4 @@
+partition,total,generated,other,benign,malicious
+train,35664,1636,34028,18886,16778
+validation,7668,329,7339,4055,3613
+test,7653,279,7374,4056,3597

@@ -1,0 +1,99 @@
+{
+  "protocol_sha256": {
+    "original": "be91eb8e850b101a02af06cfbcf8826821df7ed6cc0fb0c6fd8430c2002a1ab1",
+    "broader_data": "6c67b200ea5550b862b0a420046d7adceae73d2b5725ec8c71766f4d92489f78"
+  },
+  "holdout_sha256": "b8a069c5d9671e74ad4c0f0b29ef1b3a40bd7c0c58c02d6884ae4e32bceeded8",
+  "script_sha256": "15dc5e2470caaf0422b9c90a90abc6a426fbd2f6b8a2e454c9c47067c70bb0be",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "primary_operating_point": "fpr_cap_0.01",
+  "policy": "All ten models, frozen family-specific encoders and validation-selected thresholds; report all seeds. No selection or tuning on holdout.",
+  "models": {
+    "original_42": {
+      "sha256": "cdc771274f9512c5bf24bead1742f5ee3cbc8fa3af182b2bd357ed5d6f0b88e4",
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9660593867301942,
+        "fpr_cap_0.005": 0.9776895046234132
+      }
+    },
+    "original_43": {
+      "sha256": "63dfaa62265219f1f9143ad620f995c21957a8f1637c02cf5d153e05b61adb87",
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9960824251174928,
+        "fpr_cap_0.005": 0.9970275759696962
+      }
+    },
+    "original_44": {
+      "sha256": "4e57a3e10c35664e82f61a77903cca49cc4e330d1a5ac6ab05e54278f55bec00",
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9819468259811402,
+        "fpr_cap_0.005": 0.9883783459663392
+      }
+    },
+    "original_45": {
+      "sha256": "269e0341943a542bc4da74ac5aae355f079475d602b2c9ab20b23bc73611edb1",
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9904727339744569,
+        "fpr_cap_0.005": 0.9930610656738282
+      }
+    },
+    "original_46": {
+      "sha256": "135ddffcdd6ab771009aee21e934700fd40f8fe36d337b2d44622749865af1f5",
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9950937032699586,
+        "fpr_cap_0.005": 0.9957840442657472
+      }
+    },
+    "broader_data_42": {
+      "sha256": "f8c0c74802f5c54824996adb2c40f135cb4afbd3afd6c31a5d7e72b49cbb6ff9",
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9788497000000002,
+        "fpr_cap_0.005": 0.9913388000000001
+      }
+    },
+    "broader_data_43": {
+      "sha256": "4197c1f56c9aba5f3445232ae5b3d65d7ba799cbebd5b46c9ad5eea178c1d760",
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9779845500000001,
+        "fpr_cap_0.005": 0.9899736000000001
+      }
+    },
+    "broader_data_44": {
+      "sha256": "462f62957a632ea5346d723adaacad425ee6bdd4e2894ce2c7acbf8813c019fb",
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9733850000000001,
+        "fpr_cap_0.005": 0.9860373000000001
+      }
+    },
+    "broader_data_45": {
+      "sha256": "70f39d3a5e75c19047f07126b50b230822086b48a9c2cf75420007d523ff5478",
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9793463000000001,
+        "fpr_cap_0.005": 0.9902954000000002
+      }
+    },
+    "broader_data_46": {
+      "sha256": "3093f17a8f581f85fc5cc0aa8b38eaf0d5ac8a5abb6cf9b100b3e8379169ad38",
+      "thresholds": {
+        "default_0.5": 0.5,
+        "fpr_cap_0.01": 0.9665984500000001,
+        "fpr_cap_0.005": 0.9832554500000001
+      }
+    }
+  }
+}

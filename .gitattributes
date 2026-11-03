@@ -41,3 +41,21 @@ workflow_preservation_audit/** -text
 masked_bilstm_control_v1/** -text
 
 transformer_baseline_v3/** -text
+
+coverage_development_v1/** -text
+
+coverage_frozen_v1/** -text
+
+coverage_pilot_v1/** -text
+
+original_coverage_frozen_v1/** -text
+
+reserved_mendeley_holdout/** -text
+
+reserved_holdout_results_v1/** -text
+
+external_phiusiil_v3/** -text
+
+published_cpu_comparison_v3/** -text
+
+release_support/** -text

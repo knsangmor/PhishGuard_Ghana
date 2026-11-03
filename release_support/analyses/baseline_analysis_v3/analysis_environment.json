@@ -1,0 +1,10 @@
+{
+  "tldextract": "5.4.0",
+  "scipy": "1.17.0",
+  "sklearn": "1.8.0",
+  "numpy": "2.3.5",
+  "domain_groups": 3315,
+  "bootstrap_replicates": 3000,
+  "signflip_draws": 20000,
+  "random_seed": 20261017
+}

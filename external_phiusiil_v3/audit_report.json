@@ -1,0 +1,45 @@
+{
+  "source_csv_sha256": "a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6",
+  "citation": "Prasad, A., & Chandra, S. (2023). PhiUSIIL: A diverse security profile empowered phishing URL detection framework based on similarity index and incremental learning. Computers & Security, 103545. https://doi.org/10.1016/j.cose.2023.103545",
+  "raw_rows": 235795,
+  "source_label_mapping": {
+    "0": "phishing -> project 1",
+    "1": "legitimate -> project 0"
+  },
+  "reference_rows": 50985,
+  "reference_domain_groups": 22530,
+  "raw_flag_counts_nonexclusive": {
+    "invalid_hostname": 0,
+    "conflicting_canonical_labels": 84,
+    "conflicting_encoded_labels": 84,
+    "canonical_overlap_frozen_v3": 17,
+    "encoding_overlap_frozen_v3": 17,
+    "domain_overlap_frozen_v3": 8912
+  },
+  "exclusion_counts_exclusive": {
+    "domain_overlap_frozen_v3": 8883,
+    "conflicting_canonical_labels": 84,
+    "repeated_encoded_input": 1932,
+    "canonical_overlap_frozen_v3": 17
+  },
+  "retained_rows": 224879,
+  "retained_benign": 131488,
+  "retained_phishing": 93391,
+  "domain_groups": 195812,
+  "external_encoded_lengths_over_200": 1112,
+  "tldextract_version": "5.3.1",
+  "public_suffix_handling": "bundled offline snapshot; private suffixes included; IPs grouped by address",
+  "limitations": [
+    "A separate published corpus does not prove independent upstream collection.",
+    "Overlap removal is against all frozen v3 partitions, not the entire unused original corpus.",
+    "No per-URL collection timestamps supplied: no temporal generalization claim.",
+    "External positives are phishing; training positives include malware and defacement.",
+    "Domain-disjoint filtering changes the external class and domain distribution."
+  ],
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "external_test_sha256": "c3f6b91e1d20b96aee4bd860c769525683d0adee736e00a2b40e8e33e5744a88"
+}

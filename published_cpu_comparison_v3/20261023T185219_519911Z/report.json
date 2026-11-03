@@ -1,0 +1,80 @@
+{
+  "completed": true,
+  "manifest": {
+    "root": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED",
+    "encoder": "C:\\Users\\sangn\\.cache\\huggingface\\hub\\models--amahdaouy--DomURLs_BERT\\snapshots\\ba5fa28ae1361f8115630e252ac49535ffe3bab1",
+    "published_model": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\published_baseline_results\\best_model.pt",
+    "cnn_model": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\corrected_results_v3\\seed_42\\phishguard_gh_model.keras",
+    "cnn_scores": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\corrected_results_v3\\seed_42\\y_prob.npy",
+    "test": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\dataset_fix_outputs_v3\\test.csv",
+    "published_predictions": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\published_baseline_results\\evaluation-20261023T183444Z-1-001\\evaluation\\20261023T181837_056954Z\\seed_42_test_predictions.csv",
+    "torch_python": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\.venv_domurls\\Scripts\\python.exe",
+    "cnn_python": "C:\\Users\\sangn\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "test_sha256": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f",
+    "cnn_model_sha256": "cdc771274f9512c5bf24bead1742f5ee3cbc8fa3af182b2bd357ed5d6f0b88e4",
+    "published_model_sha256": "23c871cd54ea00d8420a3f957e91e7ee4f707ba77fcbe8c0ec205d164f877573",
+    "published_protocol_sha256": "f38157294be9eaccfc8ef7eb086e013e4ea514d9f170d158004584ee1c67c879",
+    "evaluation_report_sha256": "b81b462705a756f53ee5b9a493141cd6f480d6e8e03e62d3349a5e03a9e2ee9d",
+    "script_sha256": "12462bdce23b62d92c4b721e4e3e10e357fe49cd71957edeccdf47fec85f01f5",
+    "threads": 6,
+    "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "logical_cpus": 12,
+    "sample_size": 512,
+    "selection_seed": 142
+  },
+  "results": [
+    {
+      "model": "domurls_bert",
+      "batch_size": 8,
+      "urls": 512,
+      "seconds": 141.07542949996423,
+      "ms_per_url": 275.53794824211764,
+      "max_absolute_score_difference": 4.798173904418945e-06,
+      "threshold_0_5_disagreements": 0,
+      "comparison_atol": 0.0001,
+      "versions": {
+        "python": "3.11.9",
+        "numpy": "1.26.4",
+        "torch": "2.2.2+cpu",
+        "transformers": "4.39.3",
+        "tokenizers": "0.15.2",
+        "safetensors": "0.4.3"
+      },
+      "mode": "verification",
+      "threads": 6,
+      "repeat": 0
+    },
+    {
+      "model": "cnn_lstm",
+      "batch_size": 8,
+      "urls": 512,
+      "seconds": 1.6753219000529498,
+      "ms_per_url": 3.2721130860409176,
+      "max_absolute_score_difference": 6.854534149169922e-07,
+      "threshold_0_5_disagreements": 0,
+      "comparison_atol": 0.0001,
+      "versions": {
+        "python": "3.11.9",
+        "numpy": "1.26.4",
+        "tensorflow": "2.18.0",
+        "keras": "3.13.2"
+      },
+      "mode": "verification",
+      "threads": 6,
+      "repeat": 0
+    }
+  ],
+  "timing": "Warm float32 inference, output materialized on CPU; pre-encoded identical 512 URLs; three warmups; model loading/encoding/startup/writes excluded.",
+  "execution": "Separate sequential processes; six intra-op threads and one inter-op thread; alternating model order across repeats.",
+  "limitations": [
+    "Frameworks and representations differ; this compares implemented systems, not architecture in isolation.",
+    "Current TensorFlow may differ from historical runs; do not combine old and new timing rows.",
+    "Fixed subset; five timing repeats are not five model seeds or independent populations.",
+    "Batch-1 amortized throughput excludes request/serving overhead.",
+    "CPU/GPU and package versions can change scores slightly; differences and verdict changes are retained.",
+    "Power, temperature and other system load are uncontrolled."
+  ],
+  "training_performed": false,
+  "network_access": false
+}

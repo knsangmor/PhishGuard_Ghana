@@ -1,0 +1,79 @@
+{
+  "status": "AUDIT_COMPLETE_NO_MODEL_SCORING",
+  "citation": "Hannousse, Abdelhakim; Yahiouche, Salima (2021), Web page phishing detection, Mendeley Data, V3, doi: 10.17632/c2gw7fy2j4.3",
+  "source_csv_sha256": "21093e2902e5441c86a6daf95e86e7c332046e477fdf109a579d7bd81e586d6c",
+  "full_phiusiil_sha256": "a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6",
+  "raw_rows": 11430,
+  "reference_v3_rows": 50985,
+  "reference_phiusiil_rows": 235795,
+  "label_mapping": {
+    "legitimate": 0,
+    "phishing": 1
+  },
+  "nonexclusive_flags": {
+    "invalid_hostname": 0,
+    "conflicting_canonical_labels": 0,
+    "conflicting_old_encoding_labels": 0,
+    "conflicting_new_encoding_labels": 0,
+    "frozen_v3_canonical_overlap": 308,
+    "frozen_v3_old_encoding_overlap": 308,
+    "frozen_v3_new_encoding_overlap": 323,
+    "frozen_v3_domain_overlap": 2879,
+    "full_phiusiil_canonical_overlap": 55,
+    "full_phiusiil_old_encoding_overlap": 55,
+    "full_phiusiil_new_encoding_overlap": 215,
+    "full_phiusiil_domain_overlap": 2134
+  },
+  "exclusive_exclusions": {
+    "frozen_v3_domain_overlap": 2556,
+    "full_phiusiil_domain_overlap": 653,
+    "frozen_v3_canonical_overlap": 308,
+    "full_phiusiil_new_encoding_overlap": 147,
+    "repeated_input": 60,
+    "full_phiusiil_canonical_overlap": 32,
+    "frozen_v3_new_encoding_overlap": 15
+  },
+  "retained_rows": 7659,
+  "retained_benign": 3646,
+  "retained_phishing": 4013,
+  "retained_domain_groups": 5940,
+  "tldextract_version": "5.3.1",
+  "rules": "Fixed exclusions for invalid host, label conflicts, canonical/old/new encoded overlap and domain overlap with all v3 and full PhiUSIIL; stable source order deduplication.",
+  "evaluation_policy": {
+    "purpose": "reserved external comparison of frozen original vs corrected detector",
+    "no_training_or_tuning_on_holdout": true,
+    "model_scoring_performed": false,
+    "development_data": "existing v3 train/validation; PhiUSIIL diagnostic only",
+    "configuration_and_thresholds": "freeze before any holdout scoring; thresholds selected using original validation data only",
+    "planned_seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "report_metrics": [
+      "accuracy",
+      "precision",
+      "recall",
+      "F1",
+      "ROC-AUC",
+      "average precision",
+      "FPR",
+      "confusion matrices"
+    ],
+    "report_negative_results": true
+  },
+  "limitations": [
+    "Independence of upstream collection is not proven by these exclusions.",
+    "These are historical data, not a future-traffic test.",
+    "Removing development-overlapping domains changes the source distribution.",
+    "The final test must not be inspected for model-selection feedback; further revisions need a new evaluation."
+  ],
+  "partition_sha256": {
+    "train": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+    "validation": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+    "test": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f"
+  },
+  "holdout_sha256": "b8a069c5d9671e74ad4c0f0b29ef1b3a40bd7c0c58c02d6884ae4e32bceeded8"
+}
