@@ -290,91 +290,241 @@ _BRANDS     = ["mtn", "vodafone", "airtel", "ecobank", "gcb", "absa", "bog"]
 _FREE_TLDS  = [".ml", ".tk", ".cf", ".ga", ".gq", ".xyz", ".top"]
 _SHORTENERS = ["bit.ly", "tinyurl.com", "ow.ly", "rb.gy", "is.gd"]
 
-
 def build_rationale(url: str, verdict: str, prob: float) -> str:
     url_l = url.lower()
     indicators = []
+
     try:
         hostname = urlparse(url).netloc or ""
     except Exception:
         hostname = ""
+
     for tld in _FREE_TLDS:
         if hostname.endswith(tld):
             indicators.append(f"Free TLD ({tld})")
             break
+
     if re.search(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", hostname):
         indicators.append("IP address hostname")
+
     for s in _SHORTENERS:
         if s in url_l:
             indicators.append(f"Shortener ({s})")
             break
+
     for b in _BRANDS:
         if b in url_l and any(hostname.endswith(t) for t in _FREE_TLDS):
             indicators.append(f"Brand '{b}' on suspicious domain")
             break
+
     if "@" in url:
         indicators.append("@ symbol in URL")
+
     if not url_l.startswith("https"):
         indicators.append("Non-HTTPS")
-    ind = "; ".join(indicators[:3]) if indicators else "No rule-based indicators"
-    return (f"[PRIMARY] CNN-LSTM: {prob*100:.2f}% {verdict}. "
-            f"[SECONDARY] {ind}.")
 
+    ind = (
+        "; ".join(indicators[:3])
+        if indicators
+        else "No rule-based indicators"
+    )
+
+    # Assumes prob is the model's phishing probability.
+    phishing_probability = float(prob)
+
+    if not 0.0 <= phishing_probability <= 1.0:
+        raise ValueError("Phishing probability must be between 0 and 1.")
+
+    if verdict.upper() == "LEGITIMATE":
+        verdict_probability = 1.0 - phishing_probability
+    elif verdict.upper() == "PHISHING":
+        verdict_probability = phishing_probability
+    else:
+        raise ValueError(f"Unexpected verdict: {verdict!r}")
+
+    return (
+        f"[PRIMARY] Model probability for {verdict}: "
+        f"{verdict_probability * 100:.2f}%. "
+        f"[SECONDARY] {ind}."
+    )
 
 # PIPELINE
 
 if __name__ == "__main__":
 
+    from pathlib import Path
+
+    # Set the training seed.
+    SEED = 46
+    keras.utils.set_random_seed(SEED)
+
+    # Create a separate folder for this run.
+    project_folder = Path(__file__).resolve().parent
+    results_folder = (
+        project_folder / "corrected_results" / f"seed_{SEED}"
+    )
+
+    results_folder.mkdir(parents=True, exist_ok=False)
+
+    # Relative output filenames will now save inside this folder.
+    os.chdir(results_folder)
+
+    print("Results will be saved to:", results_folder)
 
     print("  PhishGuard-GH , Full Integrity Pipeline")
     print(f"  TensorFlow: {tf.__version__}   Keras: {keras.__version__}")
 
-
-
     # STAGE 1  Hash the raw dataset
 
-    print("\nHashing raw dataset...")
-    if not os.path.exists(DATASET_CSV):
-        raise FileNotFoundError(f"Dataset not found: {DATASET_CSV}")
+       # STAGE 1  Fingerprint the corrected dataset and partitions
+
+    from pathlib import Path
+    import pandas as pd
+
+    print("\nFingerprinting corrected dataset partitions...")
+
+    split_folder = (
+        Path(__file__).resolve().parent / "dataset_fix_outputs"
+    )
+
+    partition_frames = []
+    partition_details = {}
+
+    for name in ["train", "validation", "test"]:
+        path = split_folder / f"{name}.csv"
+
+        if not path.exists():
+            raise FileNotFoundError(f"Partition not found: {path}")
+
+        part = pd.read_csv(path)
+
+        if not {"url", "label"}.issubset(part.columns):
+            raise ValueError(f"{name}.csv needs url and label columns.")
+
+        if part.empty or part[["url", "label"]].isna().any().any():
+            raise ValueError(f"{name}.csv is empty or has missing values.")
+
+        if not part["label"].isin([0, 1]).all():
+            raise ValueError(f"{name}.csv contains invalid labels.")
+
+        partition_frames.append(part)
+
+        partition_details[name] = {
+            "file": str(path),
+            "sha256": sha256_file(str(path)),
+            "rows": len(part),
+            "size_bytes": path.stat().st_size,
+        }
+
+    # Save the exact rows in training, validation, testing order.
+    combined = pd.concat(partition_frames, ignore_index=True)
+
+    combined_path = split_folder / "dataset_training_snapshot.csv"
+    combined.to_csv(combined_path, index=False, encoding="utf-8")
+
+    # Point later pipeline stages to the corrected snapshot.
+    DATASET_CSV = str(combined_path)
 
     dataset_digest = sha256_file(DATASET_CSV)
+
     dataset_hash_record = {
-        "label":      "DATASET_SNAPSHOT",
-        "file":       DATASET_CSV,
-        "sha256":     dataset_digest,
-        "timestamp":  datetime.now(timezone.utc).isoformat(),
-        "size_bytes": os.path.getsize(DATASET_CSV),
-        "note":       "Hashed before any preprocessing or splitting",
+        "label": "CORRECTED_DATASET_SNAPSHOT",
+        "file": DATASET_CSV,
+        "sha256": dataset_digest,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "size_bytes": combined_path.stat().st_size,
+        "rows": len(combined),
+        "partitions": partition_details,
+        "note": (
+            "Combined in train, validation, test order. "
+            "Partition fingerprints preserve split membership."
+        ),
     }
+
     save_hash_txt(DATASET_HASH_FILE, dataset_hash_record)
-    print(f"    SHA256: {dataset_digest[:48]}...")
+
+    print(f"    Snapshot rows: {len(combined):,}")
+    print(f"    Dataset SHA256: {dataset_digest}")
+
+    for name, details in partition_details.items():
+        print(f"    {name}: {details['rows']:,} rows")
 
 
-    # STAGE 2  Load + preprocess dataset
+ # STAGE 2  Load the corrected dataset partitions
 
-    print("\nLoading and encoding dataset...")
-    df = pd.read_csv(DATASET_CSV)
-    all_urls   = df["url"].tolist()
-    all_labels = df["label"].tolist()
-    total      = len(df)
-
-    X = np.array([url_to_seq(u) for u in all_urls], dtype=np.float32)
-    y = np.array(all_labels, dtype=np.float32)
-    print(f"    Total: {total:,}  "
-          f"Phishing: {int((y==1).sum()):,}  "
-          f"Legitimate: {int((y==0).sum()):,}")
-
-
-    # STAGE 3  Train / val / test split
-
-    from pg_fix import group_split
+    from pathlib import Path
     import pandas as pd
-    _df = pd.read_csv(DATASET_CSV) if 'DATASET_CSV' in dir() else pd.read_csv("phishguard_gh_dataset.csv")
-    tr_idx, va_idx, te_idx = group_split(_df)
-    X_tr,  y_tr  = X[tr_idx], y[tr_idx]
+
+    print("\nLoading corrected dataset partitions...")
+
+    split_folder = (
+        Path(__file__).resolve().parent / "dataset_fix_outputs"
+    )
+
+    train_df = pd.read_csv(split_folder / "train.csv")
+    val_df = pd.read_csv(split_folder / "validation.csv")
+    test_df = pd.read_csv(split_folder / "test.csv")
+
+    # Check that each file contains the required columns and labels.
+    for name, part in [
+        ("Training", train_df),
+        ("Validation", val_df),
+        ("Testing", test_df),
+    ]:
+        if not {"url", "label"}.issubset(part.columns):
+            raise ValueError(f"{name} file needs url and label columns.")
+
+        if part.empty or part[["url", "label"]].isna().any().any():
+            raise ValueError(f"{name} file is empty or has missing values.")
+
+        if not part["label"].isin([0, 1]).all():
+            raise ValueError(f"{name} file contains invalid labels.")
+
+    # Combine them in a known order for full-dataset processing.
+    # Their training/validation/testing assignments stay unchanged.
+    df = pd.concat(
+        [train_df, val_df, test_df],
+        ignore_index=True,
+    )
+
+    all_urls = df["url"].tolist()
+    all_labels = df["label"].tolist()
+    total = len(df)
+
+    print("\nEncoding URLs...")
+
+    X = np.array(
+        [url_to_seq(url) for url in all_urls],
+        dtype=np.float32,
+    )
+    y = np.array(all_labels, dtype=np.float32)
+
+    print(
+        f"    Total: {total:,}  "
+        f"Malicious: {int((y == 1).sum()):,}  "
+        f"Benign: {int((y == 0).sum()):,}"
+    )
+
+    # STAGE 3  Use the saved partitions without splitting again
+
+    train_end = len(train_df)
+    val_end = train_end + len(val_df)
+
+    tr_idx = np.arange(0, train_end)
+    va_idx = np.arange(train_end, val_end)
+    te_idx = np.arange(val_end, total)
+
+    X_tr, y_tr = X[tr_idx], y[tr_idx]
     X_val, y_val = X[va_idx], y[va_idx]
-    X_te,  y_te  = X[te_idx], y[te_idx]
-    print(f"    Train: {len(X_tr):,}   Val: {len(X_val):,}   Test: {len(X_te):,}")
+    X_te, y_te = X[te_idx], y[te_idx]
+
+    print(
+        f"    Train: {len(X_tr):,}  "
+        f"Validation: {len(X_val):,}  "
+        f"Test: {len(X_te):,}"
+    )
+
+    assert len(X_tr) + len(X_val) + len(X_te) == total
 
 
     # STAGE 4  Build model
@@ -651,6 +801,12 @@ if __name__ == "__main__":
         prob     = float(row["probability"])
         verdict  = "PHISHING" if int(row["pred_label"]) == 1 else "LEGITIMATE"
         rationale = build_rationale(url, verdict, prob)
+
+     # Probability assigned to the predicted verdict.
+        confidence = prob if verdict == "PHISHING" else 1.0 - prob
+
+        ts = time.perf_counter()
+        chain.log(url, verdict, confidence, rationale)
 
         ts = time.perf_counter()
         chain.log(url, verdict, prob, rationale)
