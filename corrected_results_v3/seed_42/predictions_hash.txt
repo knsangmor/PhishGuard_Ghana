@@ -1,0 +1,13 @@
+{
+  "label": "PREDICTION_ARTIFACT",
+  "file": "predictions.csv",
+  "sha256": "ad62e1de2e660addc9dc1103795bfebeb92460900537fb7a5c8577b20573a5f5",
+  "timestamp": "2026-10-14T12:51:42.648246+00:00",
+  "size_bytes": 3901633,
+  "total_urls": 50985,
+  "phishing_count": 23029,
+  "legit_count": 27956,
+  "dataset_sha256": "b4cf485ab2e27235b57da4ef7ce2e7ee47e0db23d2b532fb7469f95e693f242c",
+  "model_sha256": "014d85f22f57c0494383a027deffee31251383a6e984d8bc10af1aa45cd45dbe",
+  "note": "Hashed immediately after model.predict \u2014 hash chain reads this file only, never calls model.predict"
+}

@@ -1,0 +1,33 @@
+{
+  "accuracy": 0.882922,
+  "precision": 0.9069,
+  "recall": 0.836808,
+  "f1_score": 0.870445,
+  "auc_roc": 0.948576,
+  "threshold": 0.5,
+  "test_size": 7653,
+  "timestamp": "2026-10-14T17:15:30.177557+00:00",
+  "dataset_sha256": "b4cf485ab2e27235b57da4ef7ce2e7ee47e0db23d2b532fb7469f95e693f242c",
+  "seed": 44,
+  "dataset_version": "v3",
+  "partitions": {
+    "train": {
+      "file": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\dataset_fix_outputs_v3\\train.csv",
+      "sha256": "28cdda9a23f19c50d269132e44713d934c0b8b80ec8904b6dcbb2e3230b2703f",
+      "rows": 35664,
+      "size_bytes": 2279132
+    },
+    "validation": {
+      "file": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\dataset_fix_outputs_v3\\validation.csv",
+      "sha256": "8fff2eec428c94bb099ad5299e2314b229979c19e13b9232b04bc77ef083908e",
+      "rows": 7668,
+      "size_bytes": 487995
+    },
+    "test": {
+      "file": "C:\\Users\\sangn\\Desktop\\PhishGuard_Ghana-FIXED\\PhishGuard_Ghana-FIXED\\dataset_fix_outputs_v3\\test.csv",
+      "sha256": "22772ff2322b29fa4acb87c537095f1a956c063e0109000e8ebf0716e711e14f",
+      "rows": 7653,
+      "size_bytes": 477657
+    }
+  }
+}

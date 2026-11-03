@@ -1,0 +1,43 @@
+scenario,records,internal_check_passed,reference_anchor_check_passed,first_failure_position,reason
+untampered,50985,True,True,,internally consistent
+edit_first_seq_no,50985,False,False,1,record hash mismatch
+edit_first_url,50985,False,False,1,record hash mismatch
+edit_first_verdict,50985,False,False,1,record hash mismatch
+edit_first_confidence,50985,False,False,1,record hash mismatch
+edit_first_rationale,50985,False,False,1,record hash mismatch
+edit_first_timestamp,50985,False,False,1,record hash mismatch
+edit_first_model,50985,False,False,1,record hash mismatch
+edit_first_legal,50985,False,False,1,record hash mismatch
+edit_first_prev_hash,50985,False,False,1,link mismatch
+edit_first_record_hash,50985,False,False,1,record hash mismatch
+delete_first,50984,False,False,1,link mismatch
+edit_middle_seq_no,50985,False,False,25493,record hash mismatch
+edit_middle_url,50985,False,False,25493,record hash mismatch
+edit_middle_verdict,50985,False,False,25493,record hash mismatch
+edit_middle_confidence,50985,False,False,25493,record hash mismatch
+edit_middle_rationale,50985,False,False,25493,record hash mismatch
+edit_middle_timestamp,50985,False,False,25493,record hash mismatch
+edit_middle_model,50985,False,False,25493,record hash mismatch
+edit_middle_legal,50985,False,False,25493,record hash mismatch
+edit_middle_prev_hash,50985,False,False,25493,link mismatch
+edit_middle_record_hash,50985,False,False,25493,record hash mismatch
+delete_middle,50984,False,False,25493,link mismatch
+edit_last_seq_no,50985,False,False,50985,record hash mismatch
+edit_last_url,50985,False,False,50985,record hash mismatch
+edit_last_verdict,50985,False,False,50985,record hash mismatch
+edit_last_confidence,50985,False,False,50985,record hash mismatch
+edit_last_rationale,50985,False,False,50985,record hash mismatch
+edit_last_timestamp,50985,False,False,50985,record hash mismatch
+edit_last_model,50985,False,False,50985,record hash mismatch
+edit_last_legal,50985,False,False,50985,record hash mismatch
+edit_last_prev_hash,50985,False,False,50985,link mismatch
+edit_last_record_hash,50985,False,False,50985,record hash mismatch
+delete_last,50984,True,False,,internally consistent
+swap_adjacent_first,50985,False,False,1,link mismatch
+swap_adjacent_middle,50985,False,False,25493,link mismatch
+swap_adjacent_last,50985,False,False,50984,link mismatch
+truncate_tail_1,50984,True,False,,internally consistent
+truncate_tail_10,50975,True,False,,internally consistent
+truncate_tail_5098,45887,True,False,,internally consistent
+remove_entire_chain,0,True,False,,internally consistent
+edit_and_recompute_all_hashes,50985,True,False,,internally consistent
