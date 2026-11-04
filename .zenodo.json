@@ -1,0 +1,30 @@
+{
+  "title": "PhishGuard research revision v3.0.0",
+  "upload_type": "software",
+  "version": "v3.0.0",
+  "creators": [
+    {
+      "name": "Sangmor Nartey Kenneth",
+      "affiliation": "Department of Computer Science, Kwame Nkrumah University of Science and Technology, Kumasi, Ghana",
+      "orcid": "0009-0000-8683-2497"
+    },
+    {
+      "name": "Kwame Ofosuhene Peasah",
+      "affiliation": "Department of Computer Science, Kwame Nkrumah University of Science and Technology, Kumasi, Ghana",
+      "orcid": "0000-0003-3863-4642"
+    },
+    {
+      "name": "Adu-Boahene Bright",
+      "affiliation": "Department of Computer Science, Kwame Nkrumah University of Science and Technology, Kumasi, Ghana",
+      "orcid": "0009-0007-9413-8332"
+    }
+  ],
+  "description": "Research software and saved experiments for malicious URL screening with a CNN-LSTM, comparative baselines, rule annotations and tamper-evident logging. The positive class combines phishing, malware and defacement. Ghana-specific performance and production readiness are not established. MIT applies only to original project software and associated software documentation; datasets, model weights, manuscripts and third-party components are excluded from that licence grant. See LICENSE_SCOPE.md and THIRD_PARTY_NOTICES.md. DomURLs-BERT weights, tokenizer assets, notebook and selected integration code are intentionally withheld pending redistribution review. The archive does not support complete reproduction of every experiment.",
+  "license": "mit",
+  "keywords": [
+    "malicious URL detection",
+    "CNN-LSTM",
+    "reproducibility",
+    "tamper-evident logging"
+  ]
+}
